@@ -39,13 +39,19 @@ export class AdminPanelComponent implements OnInit {
       this.user.name = this.addForm.get('name').value;
       this.user.password = this.addForm.get('password').value;
       this.userService.addUser(this.user).subscribe(data => {
-        this.getAllUser();
+        window.location.reload();
+        //this.getAllUser();
       });
+
+
     }
   }
 
   editUser(user: User){
-    this.userService.editUser(user).subscribe();
+    this.userService.editUser(user).subscribe(data => {
+        this.getAllUser();
+      }
+    );
   }
 
   deleteUser(id: Number){

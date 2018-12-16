@@ -12,6 +12,7 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatTableModule, MatIconModule, MatInputModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatTabsModule,
   ],
   providers: [
     UserService,

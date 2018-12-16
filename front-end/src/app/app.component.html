@@ -1,9 +1,8 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div >
-  <ul>
-    <li><a routerLink="/home">Strona główna</a></li>
-    <li><a routerLink="/admin-panel">Panel administratora</a></li>
-  </ul>
-</div>
+<nav mat-tab-nav-bar backgroundColor="primary">
+  <a mat-tab-link *ngFor="let link of links"
+     (click)="activeLink = link.link"
+     [routerLink]="link.link"
+     [active]="activeLink == link.link"> {{link.name}} </a>
+</nav>
 
 <router-outlet></router-outlet>
