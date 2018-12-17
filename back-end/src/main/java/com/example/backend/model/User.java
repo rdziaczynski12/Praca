@@ -2,7 +2,7 @@ package com.example.backend.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "dbUser")
 public class User {
 
     @Id
