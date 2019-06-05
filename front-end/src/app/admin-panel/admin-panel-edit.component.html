@@ -5,18 +5,25 @@
 <form [formGroup]="editForm" class="formEdit">
 
     <mat-form-field >            
-        <input matInput formControlName="name" placeholder="Podaj nazwę użytkownika"/>
+        <input matInput formControlName="firstName" placeholder="Podaj imie"/>
         <mat-error>
-            Nazwa użytkownika jest <strong>wymagana</strong>!
+            Imię jest <strong>wymagana</strong>!
         </mat-error>
     </mat-form-field>   
 
     <mat-form-field >            
-        <input matInput formControlName="password" placeholder="Podaj hasło"/>
+        <input matInput formControlName="lastName" placeholder="Podaj nazwisko"/>
         <mat-error>
-            Hasło jest <strong>wymagane</strong>!
+            Nazwisko jest <strong>wymagane</strong>!
         </mat-error>
     </mat-form-field>   
+
+    <mat-form-field >            
+        <input matInput formControlName="username" placeholder="Podaj login"/>
+        <mat-error>
+            Login jest <strong>wymagany</strong>!
+        </mat-error>
+    </mat-form-field> 
 
     <button mat-flat-button class="saveBtn" (click)="editUser()">Zapisz</button>
     <button mat-raised-button class="cancelBtn" (click)="cancel()">Anuluj</button>

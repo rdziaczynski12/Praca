@@ -14,6 +14,11 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { MatSnackBarModule } from "@angular/material";
+
+import { httpInterceptorProviders } from './auth/auth-interceptor';
 
 
 @NgModule({
@@ -22,6 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HomeComponent,
     AdminPanelComponent,
     EditUserDialog,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,12 +44,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MatTabsModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   entryComponents: [
     EditUserDialog,
   ],
   providers: [
     UserService,
+    httpInterceptorProviders,
   ],
   bootstrap: [AppComponent]
 })

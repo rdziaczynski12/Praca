@@ -16,16 +16,7 @@ export interface DialogData {
 export class AdminPanelComponent implements OnInit {
   constructor(private userService: UserService, public dialog: MatDialog ) { }
 
-  displayedColumns: string[] = ['id', 'name', 'password', "edit", "delete"];
-  
-  addForm = new FormGroup({
-    name: new FormControl('', [
-      Validators.required
-    ]),
-    password: new FormControl('', [
-      Validators.required
-    ])
-  });
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', "username", "edit", "delete"];
   
   user: User = new User();
   users: User[];
@@ -37,17 +28,6 @@ export class AdminPanelComponent implements OnInit {
     this.userService.getAllUser().subscribe(data => {
       this.users = data;
     })
-  }
-
-  addUser(){
-    if(this.addForm.valid) {
-      this.user.name = this.addForm.get('name').value;
-      this.user.password = this.addForm.get('password').value;
-      this.userService.addUser(this.user).subscribe(data => {
-        //window.location.reload();
-        this.getAllUser();
-      });
-    }
   }
 
   openEditUser(user: User){
@@ -80,10 +60,13 @@ export class EditUserDialog implements OnInit {
   user: User = new User();
 
   editForm = new FormGroup({
-    name: new FormControl('', [
+    firstName: new FormControl('', [
       Validators.required
     ]),
-    password: new FormControl('', [
+    lastName: new FormControl('', [
+      Validators.required
+    ]),
+    username: new FormControl('', [
       Validators.required
     ])
   });
@@ -96,8 +79,9 @@ export class EditUserDialog implements OnInit {
   }
 
   ngOnInit(){
-    this.editForm.get('name').setValue(this.user.name);
-    this.editForm.get('password').setValue(this.user.password);
+    this.editForm.get('firstName').setValue(this.user.firstName);
+    this.editForm.get('lastName').setValue(this.user.lastName);
+    this.editForm.get('username').setValue(this.user.username);
   }
 
   cancel(){
@@ -106,8 +90,9 @@ export class EditUserDialog implements OnInit {
 
   editUser(){
     if(this.editForm.valid) {
-      this.user.name = this.editForm.get('name').value;
-      this.user.password = this.editForm.get('password').value;
+      this.user.firstName = this.editForm.get('firstName').value;
+      this.user.lastName = this.editForm.get('lastName').value;
+      this.user.username = this.editForm.get('username').value;
       this.userService.editUser(this.user).subscribe(data => {
         this.dialogRef.close(this.user);
       })

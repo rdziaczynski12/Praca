@@ -6,15 +6,22 @@
       <td mat-cell *matCellDef="let user"> {{user.id}} </td>
     </ng-container>
   
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Nazwa użytkownika </th>
-      <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> Imię </th>
+      <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
+      <td><input></td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Nazwisko </th>
+      <td mat-cell *matCellDef="let user"> {{user.lastName}} </td>
       <td><input></td>
     </ng-container>
   
-    <ng-container matColumnDef="password">
-      <th mat-header-cell *matHeaderCellDef> Hasło </th>
-      <td mat-cell *matCellDef="let user"> {{user.password}} </td>
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Login </th>
+      <td mat-cell *matCellDef="let user"> {{user.username}} </td>
+      <td><input></td>
     </ng-container>
   
     <ng-container matColumnDef="edit">
@@ -41,23 +48,4 @@
   
   </table>
   
-  <form [formGroup]="addForm" class="formAdd">
-  
-    <mat-form-field >            
-        <input matInput formControlName="name"  placeholder="Podaj nazwę użytkownika"/>
-        <mat-error>
-            Nazwa jest <strong>wymagana</strong>!
-        </mat-error>
-    </mat-form-field>    
-  
-    <mat-form-field>            
-      <input matInput formControlName="password" placeholder="Podaj hasło"/>
-      <mat-error>
-          Hasło jest <strong>wymagane</strong>!
-      </mat-error>
-  </mat-form-field> 
-  
-    <button mat-flat-button (click)="addUser()">Dodaj użytkownika</button>
-    
-  </form>
 </div>

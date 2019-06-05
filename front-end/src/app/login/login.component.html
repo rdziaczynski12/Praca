@@ -1,0 +1,30 @@
+<div *ngIf="isLoggedIn; else loggedOut">
+  <h2>Jesteś już zalogowany!</h2>
+</div>
+ 
+<ng-template #loggedOut>
+<div class="content">
+  <h2>Zaloguj się!</h2>
+    <div style="width: 350px; margin-left: auto; margin-right: auto">
+      
+      <form>
+        <mat-form-field style="width: 350px">
+          <input matInput placeholder="Login" (keyup.enter)="login()" [(ngModel)]="form.username" name="username" required>
+        </mat-form-field>
+        
+        <mat-form-field style="width: 350px; padding-bottom: 20px">
+          <input matInput type="password" placeholder="Hasło" (keyup.enter)="login()" [(ngModel)]="form.password" name="password" required>
+        </mat-form-field>
+        <div class="loginButton">
+            <a mat-stroked-button class="buttonLogin" (click)="login()">Zaloguj się</a>
+        </div>
+      </form>
+
+      <h3>Nie masz jeszcze konta?<br>
+        <a routerLink="/register">Zarejestruj sie!</a>
+      </h3>
+
+    </div>
+</div>
+
+</ng-template>

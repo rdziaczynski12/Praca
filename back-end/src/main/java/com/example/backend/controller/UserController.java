@@ -23,19 +23,13 @@ public class UserController {
         return userService.getAllUser();
     }
 
-    @PreAuthorize("hasRole('MODER') or hasRole('ADMIN')")
-    @PostMapping(value = "/user/add")
-    public void addUser(@RequestBody User user){
-       userService.addUser(user);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping(value = "user/delete/{id}")
     public void deleteUser(@PathVariable(name = "id") Long id){
         userService.deleteUser(id);
     }
 
-    @PreAuthorize("hasRole('MODER') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @PutMapping(value = "user/edit")
     public void editUser(@RequestBody User user){
         userService.editUser(user);
