@@ -25,7 +25,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatStepperModule } from "@angular/material/stepper";
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+//import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { MenuComponent, EditMenuDialog } from './menu/menu.component';
@@ -62,7 +62,6 @@ import { MenuComponent, EditMenuDialog } from './menu/menu.component';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxMaterialTimepickerModule.setLocale('ar-AE'),
   ],
   entryComponents: [
     EditUserDialog,
