@@ -5,6 +5,7 @@ import { TokenStorageService } from '../auth/token-storage.service';
 import { AuthLoginInfo } from '../auth/login-info';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,15 @@ export class LoginComponent implements OnInit {
   form: any = {};
   isLoggedIn = false;
   private loginInfo: AuthLoginInfo;
+
+  loginForm = new FormGroup({
+    login: new FormControl("", Validators.compose([
+      Validators.required
+    ])),
+    password: new FormControl("", Validators.compose([
+      Validators.required
+    ]))
+    });
  
   constructor(private authService: AuthService, 
               private tokenStorage: TokenStorageService,
@@ -30,20 +40,21 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.loginInfo = new AuthLoginInfo(
-      this.form.username,
-      this.form.password);
-    this.authService.attemptAuth(this.loginInfo).subscribe(
-      data => {
-          this.tokenStorage.saveToken(data.accessToken);
-          this.tokenStorage.saveUsername(data.username);
-          this.tokenStorage.saveAuthorities(data.authorities);
-          this.router.navigate(['home']);
-      },
-      error => {
-        console.log(error);
-        this.openSnackBar();
-      }
-    );
+      this.loginForm.value.login,
+      this.loginForm.value.password);
+    if(this.loginForm.valid)
+      this.authService.attemptAuth(this.loginInfo).subscribe(
+        data => {
+            this.tokenStorage.saveToken(data.accessToken);
+            this.tokenStorage.saveUsername(data.username);
+            this.tokenStorage.saveAuthorities(data.authorities);
+            this.router.navigate(['home']);
+        },
+        error => {
+          console.log(error);
+          this.openSnackBar();
+        }
+      );
   }
 
   openSnackBar(): void {

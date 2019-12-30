@@ -1,8 +1,29 @@
-<nav mat-tab-nav-bar backgroundColor="primary">
-  <a mat-tab-link *ngFor="let link of links"
-     (click)="activeLink = link.link"
-     [routerLink]="link.link"
-     [active]="activeLink == link.link"> {{link.name}} </a>
-</nav>
+<mat-drawer-container class="container" autosize>
+    <mat-drawer-content id="allContent">
+      <nav mat-tab-nav-bar backgroundColor="primary" class="topNav">
+        <a mat-tab-link *ngFor="let link of links"
+           (click)="activeLink = link.link"
+           [routerLink]="link.link"
+           [active]="activeLink == link.link"> {{link.name}} </a>
+      </nav>
 
-<router-outlet></router-outlet>
+      <div class="content" [ngClass]="{'showMenuActived': showSideNav}">
+          <button type="button" class="buttonSideNav" mat-button (click)="drawer.toggle(); showMenu()" >
+            <i *ngIf="showSideNav" class="material-icons iconShow"> navigate_before </i>
+            <i *ngIf="!showSideNav" class="material-icons iconShow"> navigate_next </i>
+          </button>
+          <div class="contentPage">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+    </mat-drawer-content>
+
+    <mat-drawer #drawer class="sideNav" mode="side">
+      <a routerLink="/menu"> Menu </a><br/>
+      <a routerLink="/admin-panel"> Lista </a>
+
+    </mat-drawer>
+  
+
+  
+  </mat-drawer-container>

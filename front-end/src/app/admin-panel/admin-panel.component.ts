@@ -16,13 +16,22 @@ export interface DialogData {
 export class AdminPanelComponent implements OnInit {
   constructor(private userService: UserService, public dialog: MatDialog ) { }
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', "username", "edit", "delete"];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', "username", "edit", "delete", "activ"];
   
   user: User = new User();
   users: User[];
+  test: string = "4f0bd6cf-2527-406f-b905-d33f371c8f4e";
+  dane: any;
   ngOnInit() {
     this.getAllUser();
   }
+  getAllMenu(){
+    this.userService.getAllMenu().subscribe(data => {
+      console.log(data);
+      this.dane=data.status;
+    })
+  }
+  
 
   getAllUser(){
     this.userService.getAllUser().subscribe(data => {
@@ -44,6 +53,12 @@ export class AdminPanelComponent implements OnInit {
 
   deleteUser(id: Number){
     this.userService.deleteUser(id).subscribe(data => {
+      this.getAllUser();
+    });
+  }
+
+  activUser(id: Number){
+    this.userService.activUser(id).subscribe(data => {
       this.getAllUser();
     });
   }

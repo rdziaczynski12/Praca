@@ -20,7 +20,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "dbUser",
+@Table(name = "userDB",
         uniqueConstraints = {
         @UniqueConstraint(columnNames = {
                 "username"
@@ -57,6 +57,8 @@ public class User {
     @Email
     private String email;
 
+    private Boolean activ;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -66,12 +68,21 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String username, String email, String password) {
+    public User(String firstName, String lastName, String username, String email, String password, Boolean activ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.activ = activ;
+    }
+
+    public Boolean getActiv() {
+        return activ;
+    }
+
+    public void setActiv(Boolean activ) {
+        this.activ = activ;
     }
 
     public Long getId() {

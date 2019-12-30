@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class AuthRestAPIs {
@@ -79,7 +80,7 @@ public class AuthRestAPIs {
 
         // Creating user's account
         User user = new User(signUpRequest.getFirstName(), signUpRequest.getLastName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()));
+                encoder.encode(signUpRequest.getPassword()), false);
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -96,6 +97,12 @@ public class AuthRestAPIs {
                     Role pmRole = roleRepository.findByName(RoleName.ROLE_MODER)
                             .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
                     roles.add(pmRole);
+
+                    break;
+                case "active":
+                    Role activRole = roleRepository.findByName(RoleName.ROLE_ACTIVE_USER)
+                            .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+                    roles.add(activRole);
 
                     break;
                 default:

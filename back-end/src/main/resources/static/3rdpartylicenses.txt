@@ -339,7 +339,13 @@ MIT
 
 @angular/material/form-field
 
+@angular/material/card
+
 @angular/material/dialog
+
+@angular/material/snack-bar
+
+@angular/material/sidenav
 
 @angular/material/tabs
 

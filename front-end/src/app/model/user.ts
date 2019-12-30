@@ -3,5 +3,6 @@ export class User {
     firstName: String;
     lastName: String;
     username: String;
+    activ: boolean;
     constructor(){}
 }

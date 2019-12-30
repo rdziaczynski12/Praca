@@ -31,4 +31,12 @@ export class UserService {
     return this.http.put(`${this.API}/user/edit`, user, httpOptions);
   }
 
+  getAllMenu(): Observable<any> {
+    return this.http.get(`${this.API}/uber/menu`);
+  }
+
+  activUser(id: Number){
+    return this.http.post(`${this.API}/user/activ/${id}`, httpOptions);
+  }
+
 }

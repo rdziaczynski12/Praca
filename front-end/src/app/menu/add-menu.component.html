@@ -1,0 +1,31 @@
+<div>
+    <h1 mat-dialog-title >Edycja użytkownika:</h1>
+</div>
+
+<form [formGroup]="editForm" class="formEdit">
+
+    <mat-form-field >            
+        <input matInput formControlName="firstName" placeholder="Podaj imie"/>
+        <mat-error>
+            Imię jest <strong>wymagana</strong>!
+        </mat-error>
+    </mat-form-field>   
+
+    <mat-form-field >            
+        <input matInput formControlName="lastName" placeholder="Podaj nazwisko"/>
+        <mat-error>
+            Nazwisko jest <strong>wymagane</strong>!
+        </mat-error>
+    </mat-form-field>   
+
+    <mat-form-field >            
+        <input matInput formControlName="username" placeholder="Podaj login"/>
+        <mat-error>
+            Login jest <strong>wymagany</strong>!
+        </mat-error>
+    </mat-form-field> 
+
+    <button mat-flat-button class="saveBtn" (click)="editUser()">Zapisz</button>
+    <button mat-raised-button class="cancelBtn" (click)="cancel()">Anuluj</button>
+    
+</form>

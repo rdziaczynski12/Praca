@@ -1,59 +1,40 @@
-<div *ngIf="isSignedUp; else signupForm">
-  Your registration is successful. Please login!
-</div>
- 
-<ng-template #signupForm>
-  <div class="row col-sm-6" style="max-width:350px;">
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-      
-      <div class="form-group">
-        <label for="firstName">Your First name</label>
-        <input type="text" class="form-control" name="firstName" [(ngModel)]="form.firstName" #name="ngModel" required />
-        <div *ngIf="f.submitted && name.invalid">
-          <div *ngIf="firstName.errors.required">First name is required</div>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="lastName">Your Last name</label>
-        <input type="text" class="form-control" name="lastName" [(ngModel)]="form.lastName" #name="ngModel" required />
-        <div *ngIf="f.submitted && name.invalid">
-          <div *ngIf="lastName.errors.required">Last name is required</div>
-        </div>
-      </div>
-     
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
-          required />
-        <div *ngIf="f.submitted && username.invalid">
-          <div *ngIf="username.errors.required">Username is required</div>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
-        <div *ngIf="f.submitted && email.invalid">
-          <div *ngIf="email.errors.required">Email is required</div>
-          <div *ngIf="email.errors.email">Email must be a valid email address</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
-          required minlength="6" />
-        <div *ngIf="f.submitted && password.invalid">
-          <div *ngIf="password.errors.required">Password is required</div>
-          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary">Register</button>
-        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-          Signup failed!<br/>{{errorMessage}}
-        </div>
-      </div>
-    </form>
+<div class="container">
+  <div *ngIf="isSignedUp; else signupForm">
+    Your registration is successful. Please login!
   </div>
-</ng-template>
+  <ng-template #signupForm class="content">
+      <mat-card class="registerCard">
+        <mat-card-header>
+          <mat-card-title><h2>Rejestracja</h2></mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="cardContent">
+          <form [formGroup] = "registerForm" (ngSubmit) = "register()" >
+            <mat-form-field>
+              <input matInput placeholder="Imię" formControlName = "firstName" name="firstName" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Nazwisko" formControlName = "lastName" name="lastName" required>
+              </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Login" formControlName = "username" name="username" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="E-mail" formControlName = "email" name="email" required>
+              </mat-form-field>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Hasło" formControlName = "password" name="password" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password"  placeholder="Powtórz hasło" (keyup.enter)="register()" formControlName = "repeatPassword" name="repeatPassword" required>
+              </mat-form-field>
+            <a mat-stroked-button class="buttonRegister" (click)="register()">Zarejestruj</a>
+          </form>
+        </mat-card-content>
+        <mat-card-actions class="cardActions">
+            <h3>Masz już konto?<br/>
+              <a routerLink="/login">Zaloguj sie!</a>
+            </h3>
+        </mat-card-actions>
+      </mat-card>
+  </ng-template>
+</div>

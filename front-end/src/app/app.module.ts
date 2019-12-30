@@ -16,9 +16,12 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { MatSnackBarModule } from "@angular/material";
+import { MatSnackBarModule, MatCardModule, MatSidenavModule, MatStepperModule, MatNativeDateModule } from "@angular/material";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { MenuComponent, EditMenuDialog } from './menu/menu.component';
 
 
 @NgModule({
@@ -27,8 +30,10 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     HomeComponent,
     AdminPanelComponent,
     EditUserDialog,
+    EditMenuDialog,
     LoginComponent,
     RegisterComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +50,16 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     MatTabsModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    MatStepperModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule.setLocale('ar-AE'),
   ],
   entryComponents: [
     EditUserDialog,
+    EditMenuDialog,
   ],
   providers: [
     UserService,

@@ -1,47 +1,42 @@
-.content {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 400px;
-    height: 340px;
-    border-radius: 0.5em;
-    border-color: rgb(39, 39, 39);
-    border-style: solid;
-    border-width: 1px;
-    background-image: linear-gradient(rgb(202, 202, 202), rgb(255, 255, 255), rgb(202, 202, 202));
-  }
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    min-height: calc(100% - 70px);
+    
+    margin-bottom: 2%;
+    padding: 20px;
+}
+.loginCard{
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+.cardContent{
+    padding: 10px;
+}
+.cardContent > form{
+
+    display: flex;
+    flex-direction: column;
+}
+.cardContent > form > * {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.buttonLogin{
+    margin-top: 20px;
+    border-radius: 1em;
+    font-size: 16px;
+}
+.cardActions{
+    text-align: center;
+}
+.cardActions > h3 > a{
+    display: block;
+    text-decoration: none;
+    color: rgb(38, 161, 7);
+    padding: 10px;
+}
   
-  form {
-      font: white;
-  }
-  
-  h2 {
-      text-align: center;
-      margin-top: 20px;
-  }
-  
-  
-  h3{
-      text-align: center;
-  }
-  
-  a:link, a:hover, a:visited, a:active {
-      text-decoration: none;
-      color: rgb(38, 161, 7);
-  }
-  
-  .loginButton{
-      width: 100%;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-  }
-  
-  .buttonLogin{
-      border-radius: 1em;
-      margin: auto;
-      width: 100%;
-  }

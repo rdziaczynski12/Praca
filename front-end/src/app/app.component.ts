@@ -14,7 +14,7 @@ export class AppComponent {
 
   private roles: string[];
   private authority: string;
- 
+  public showSideNav = false;
   constructor(private tokenStorage: TokenStorageService) { }
  
   ngOnInit() {
@@ -32,6 +32,10 @@ export class AppComponent {
         return true;
       });
     }
+  }
+
+  showMenu(){
+    this.showSideNav=!this.showSideNav;
   }
 
   links : Link []= [

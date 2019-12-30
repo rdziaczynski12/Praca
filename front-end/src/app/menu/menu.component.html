@@ -1,0 +1,16 @@
+<div class="list">
+  <mat-card class="post" *ngFor="let menu of menuList">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"  [ngClass]="{'imageColor': menu.avtive}"></div>
+        <mat-card-title>{{menu.startDate | date: 'dd/MM/yyyy HH:mm'}}</mat-card-title>
+        <mat-card-subtitle>{{menu.finishDate | date: 'dd/MM/yyyy HH:mm' }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <button mat-raised-button class="buttons" [disabled]="menu.avtive" (click)="activeMenu(menu.id)">Aktywuj</button>
+        <button mat-raised-button class="buttons" (click)="editMenu(menu)">Edytuj</button>
+        <button mat-raised-button class="buttons"  [disabled]="menu.avtive==false" (click)="deleteMenu(menu.id)">Usuń</button>
+      </mat-card-content>
+  </mat-card>
+  </div>
+
+  działa
