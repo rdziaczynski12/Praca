@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {UserService} from '../service/user.service';
 import { User } from '../model/user';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
   user: User;

@@ -4,7 +4,7 @@ import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { AuthLoginInfo } from '../auth/login-info';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({

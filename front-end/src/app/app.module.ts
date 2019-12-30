@@ -8,15 +8,22 @@ import { AdminPanelComponent, EditUserDialog } from './admin-panel/admin-panel.c
 import {UserService} from './service/user.service';
 import { HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-import {MatTableModule, MatIconModule, MatInputModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { MatSnackBarModule, MatCardModule, MatSidenavModule, MatStepperModule, MatNativeDateModule } from "@angular/material";
+import { MatCardModule } from "@angular/material/card";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatStepperModule } from "@angular/material/stepper";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 

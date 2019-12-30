@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Menu } from '../model/menu';
 import { MenuService } from '../service/menu.service';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 
 export interface DialogData {
