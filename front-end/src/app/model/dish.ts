@@ -3,7 +3,8 @@ import { Restaurant } from './restaurant';
 
 export class Dish {
     id: Number;
-    price: number
+    name: String;
+    price: Number;
     description: String;
     active: boolean;
     types: TypeDish [];

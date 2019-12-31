@@ -4,37 +4,31 @@
 
 <form [formGroup]="editForm" class="formEdit">
 
-    <mat-form-field >            
-        <input matInput [matDatepicker]="picker1"  formControlName="startDate" placeholder="Podaj czas rozpoczęcia"/>
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>   
-
-    <mat-form-field >            
-        <input matInput [matDatepicker]="picker2"  formControlName="finishDate" placeholder="Podaj czas zakończenia"/>
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>  
-
-    <mat-form-field >            
-        <input matInput [matDatepicker]="picker3"  formControlName="deliveryTime" placeholder="Podaj czas dostawy"/>
-        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-        <mat-datepicker #picker3></mat-datepicker>
-    </mat-form-field>  
-
-    <mat-form-field >            
-        <input matInput formControlName="dishes" placeholder="Podaj dania"/>
-        <mat-error>
-            Pole <strong>wymagany</strong>!
-        </mat-error>
+    <mat-form-field> 
+        <input matInput formControlName="startDate" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1" placeholder="Rozpoczęcie" readonly>
+        <owl-date-time #dtPicker1></owl-date-time>
     </mat-form-field> 
 
-    <div class="ngx-material-timepicker-example__form-group">
-        <input placeholder="Default time 11:11 pm" aria-label="default time"
-            [ngxTimepicker]="defaultTime" readonly>
-        <ngx-material-timepicker #defaultTime [defaultTime]="'11:11 pm'"></ngx-material-timepicker>
-    </div>
-    
+    <mat-form-field> 
+        <input matInput formControlName="finishDate" [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2" placeholder="Zakończenie" readonly>
+        <owl-date-time #dtPicker2></owl-date-time>
+    </mat-form-field> 
+
+    <mat-form-field> 
+        <input matInput formControlName="deliveryTime" [owlDateTimeTrigger]="dtPicker3" [owlDateTime]="dtPicker3" placeholder="Dostawa" readonly>
+        <owl-date-time #dtPicker3></owl-date-time>
+    </mat-form-field> 
+
+    <mat-form-field>
+        <mat-label>Dania</mat-label>
+        <mat-select  multiple formControlName="dishes">
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+          <mat-option *ngFor="let dish of dishs" [value]="dish">{{dish.name}} - {{(dish.prize)/100}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
     <button mat-flat-button class="saveBtn" (click)="editMenu()">Zapisz</button>
     <button mat-raised-button class="cancelBtn" (click)="cancel()">Anuluj</button>
     

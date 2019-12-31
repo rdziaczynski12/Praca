@@ -25,3 +25,42 @@
   margin-left: 5%;
   width: 100px;
 }
+
+.addBtn{
+  background: #0066ff;
+  color: #fff;
+  width: 100%;
+  margin-top: 15px;
+}
+
+
+
+
+
+
+
+.saveBtn {
+  background: #0066ff;
+}
+
+.cancelBtn {
+  background: #BBBBBB;
+}
+
+.formEdit > mat-form-field {
+    width: 100%;
+}
+
+.formEdit > button {
+  color: #fff;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.time{
+  z-index: 1000 !important;
+}
+
+.timepicker-overlay[_ngcontent-drx-c11] {
+  z-index: 1000 !important;
+}

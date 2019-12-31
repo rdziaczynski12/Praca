@@ -31,4 +31,7 @@ export class MenuService {
   addMenu(menu: Menu){
     return this.http.post(`${this.API}/menu-add`, menu, httpOptions);
   }
+  getAllDish(): Observable<any> {
+    return this.http.get(`${this.API}/dish-list`, httpOptions);
+  }
 }

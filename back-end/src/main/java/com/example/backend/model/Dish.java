@@ -12,6 +12,10 @@ public class Dish {
 
     private Long price;
 
+    private String name;
+
+
+
     private String description;
 
     private boolean active;
@@ -22,23 +26,29 @@ public class Dish {
             inverseJoinColumns = @JoinColumn(name = "id_type"))
     private Set<TypeDish> types;
 
-
-
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_restaurant")
     private Restaurant restaurant;
 
-    public Dish(Long price, String description, boolean active, Set<TypeDish> types, Restaurant restaurant) {
+    public Dish(Long price, String name, String description, boolean active, Set<TypeDish> types, Restaurant restaurant) {
         this.price = price;
         this.description = description;
         this.active = active;
         this.types = types;
         this.restaurant = restaurant;
+        this.name = name;
     }
 
     public Dish() {
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public Long getId() {
         return id;
     }

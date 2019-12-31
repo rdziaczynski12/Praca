@@ -25,10 +25,12 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatStepperModule } from "@angular/material/stepper";
 import {MatDatepickerModule} from '@angular/material/datepicker';
-//import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {MatSelectModule} from '@angular/material/select';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
-import { MenuComponent, EditMenuDialog } from './menu/menu.component';
+import { MenuComponent, EditMenuDialog, AddMenuDialog } from './menu/menu.component';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { MenuComponent, EditMenuDialog } from './menu/menu.component';
     AdminPanelComponent,
     EditUserDialog,
     EditMenuDialog,
+    AddMenuDialog,
     LoginComponent,
     RegisterComponent,
     MenuComponent,
@@ -62,10 +65,15 @@ import { MenuComponent, EditMenuDialog } from './menu/menu.component';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgxMaterialTimepickerModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
+    MatSelectModule,
   ],
   entryComponents: [
     EditUserDialog,
     EditMenuDialog,
+    AddMenuDialog,
   ],
   providers: [
     UserService,

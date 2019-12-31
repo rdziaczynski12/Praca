@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.Dish;
 import com.example.backend.model.Menu;
 import com.example.backend.model.User;
 import com.example.backend.service.MenuService;
@@ -23,6 +24,19 @@ public class MenuController {
     @GetMapping("/menu-list")
     public Collection<Menu> getAllMenu(){
         return menuService.getAllMenu();
+    }
+
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @GetMapping("/dish-list")
+    public Collection<Dish> getAllDish(){
+
+        return menuService.getAllDish();
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping(value = "menu-add")
+    public void addMenu(@RequestBody Menu menu){
+        menuService.addMenu(menu);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
