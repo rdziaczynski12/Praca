@@ -68,7 +68,7 @@ export class AdminPanelComponent implements OnInit {
 @Component({
   selector: 'admin-panel-edit',
   templateUrl: './admin-panel-edit.component.html',
-  styleUrls: ['./admin-panel-edit.component.css']
+  styleUrls: ['./admin-panel.component.css']
 })
 export class EditUserDialog implements OnInit {
 

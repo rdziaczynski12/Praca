@@ -22,10 +22,7 @@
     <mat-form-field>
         <mat-label>Dania</mat-label>
         <mat-select  multiple formControlName="dishes">
-          <mat-option value="option1">Option 1</mat-option>
-          <mat-option value="option2">Option 2</mat-option>
-          <mat-option value="option3">Option 3</mat-option>
-          <mat-option *ngFor="let dish of dishs" [value]="dish">{{dish.name}} - {{(dish.prize)/100}}</mat-option>
+          <mat-option *ngFor="let dish of dishs" [value]="dish">{{dish.name}} - {{dish.price / 100.0}} zł</mat-option>
         </mat-select>
       </mat-form-field>
 

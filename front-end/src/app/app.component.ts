@@ -40,7 +40,7 @@ export class AppComponent {
 
   links : Link []= [
     {name : 'Strona główna' , link :'/home'},
-    {name : 'Panel administratora' , link :'/admin-panel'},
+    {name : 'Menu' , link :'/menu-client'},
     {name : 'Zaloguj' , link :'/login'},
     {name : 'Rejestracja' , link :'/register'}
   ];

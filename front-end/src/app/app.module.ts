@@ -28,9 +28,14 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { MenuComponent, EditMenuDialog, AddMenuDialog } from './menu/menu.component';
+import { RestaurantListComponent, EditRestaurantDialog, AddRestaurantDialog    } from './restaurant-list/restaurant-list.component';
+import { DishListComponent, EditDishDialog, AddDishDialog  } from './dish-list/dish-list.component';
+import { TypeDishListComponent, EditTypeDishDialog, AddTypeDishDialog } from './type-dish-list/type-dish-list.component';
+import { MenuClientComponent } from './menu-client/menu-client.component';
 
 
 @NgModule({
@@ -41,9 +46,19 @@ import { MenuComponent, EditMenuDialog, AddMenuDialog } from './menu/menu.compon
     EditUserDialog,
     EditMenuDialog,
     AddMenuDialog,
+    EditDishDialog, 
+    AddDishDialog,
+    EditTypeDishDialog, 
+    AddTypeDishDialog,
+    EditRestaurantDialog,
+    AddRestaurantDialog,  
     LoginComponent,
     RegisterComponent,
     MenuComponent,
+    RestaurantListComponent,
+    DishListComponent,
+    TypeDishListComponent,
+    MenuClientComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,11 +84,18 @@ import { MenuComponent, EditMenuDialog, AddMenuDialog } from './menu/menu.compon
     OwlDateTimeModule, 
     OwlNativeDateTimeModule,
     MatSelectModule,
+    MatExpansionModule,
   ],
   entryComponents: [
     EditUserDialog,
     EditMenuDialog,
     AddMenuDialog,
+    EditDishDialog, 
+    AddDishDialog,
+    EditRestaurantDialog,
+    AddRestaurantDialog,  
+    EditTypeDishDialog, 
+    AddTypeDishDialog,
   ],
   providers: [
     UserService,

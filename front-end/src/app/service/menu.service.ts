@@ -17,21 +17,21 @@ export class MenuService {
   constructor(private http: HttpClient) { }
 
   getAllMenu(): Observable<any> {
-    return this.http.get(`${this.API}/menu-list`, httpOptions);
+    return this.http.get(`${this.API}/menu/list`, httpOptions);
   }
   editMenu(menu: Menu){
-    return this.http.put(`${this.API}/menu-edit`, menu, httpOptions);
+    return this.http.put(`${this.API}/menu/edit`, menu, httpOptions);
   }
   activeMenu(id: Number){
-    return this.http.post(`${this.API}/menu-active`, id, httpOptions);
+    return this.http.post(`${this.API}/menu/active`, id, httpOptions);
   }
   deleteMenu(id: Number){
-    return this.http.post(`${this.API}/menu-delete`, id, httpOptions);
+    return this.http.post(`${this.API}/menu/delete`, id, httpOptions);
   }
   addMenu(menu: Menu){
-    return this.http.post(`${this.API}/menu-add`, menu, httpOptions);
+    return this.http.post(`${this.API}/menu/add`, menu, httpOptions);
   }
-  getAllDish(): Observable<any> {
-    return this.http.get(`${this.API}/dish-list`, httpOptions);
+  getActiveMenu(): Observable<any> {
+    return this.http.get(`${this.API}/menu/list/active`, httpOptions);
   }
 }

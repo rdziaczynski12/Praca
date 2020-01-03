@@ -1,0 +1,35 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let menu of menuList">
+      <mat-expansion-panel-header>
+          <mat-panel-title>
+            <b>Zamówienie na: {{menu.deliveryTime | date: 'dd/MM/yyyy HH:mm'}}</b>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="list">
+        <mat-card class="post" *ngFor="let dish of menu.dishes">
+            <mat-card-header>
+              <div mat-card-avatar class="header-image"></div>
+              <mat-card-title>{{dish.name}} - {{dish.price / 100.0}} zł</mat-card-title>
+                <mat-card-subtitle>
+                    <div class="typeDish" *ngFor="let type of dish.types"> | {{type.name}}</div>
+                    <div class="typeDish"> |</div>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div>
+                    {{dish.description}}
+                </div>
+                <!-- <button mat-raised-button class="buttons" [disabled]="menu.avtive" (click)="activeMenu(menu.id)">Aktywuj</button> -->
+                <button mat-raised-button class="buttons" (click)="deleteQuantity()">-</button>
+                <mat-form-field appearance="outline" class="fieldQuantity">
+                    <mat-label>Ilość</mat-label>
+                    <input matInput placeholder="Placeholder">
+                    <mat-icon matSuffix>add_shopping_cart</mat-icon>
+                  </mat-form-field>
+                <button mat-raised-button class="buttons" (click)="addQuantity()">+</button>
+            </mat-card-content>
+        </mat-card>
+        <button mat-flat-button class="addBtn" (click)="addOrder()">Zamów</button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>

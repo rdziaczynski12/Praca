@@ -50,3 +50,10 @@ table{
     width: 100%;
     margin-top: 15px;
 }
+
+.addBtn{
+    background: #0066ff;
+    color: #fff;
+    width: 100%;
+    margin-top: 15px;
+  }

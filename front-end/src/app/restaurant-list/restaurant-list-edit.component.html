@@ -1,0 +1,48 @@
+<div>
+    <h1 mat-dialog-title >Edycja restauracji:</h1>
+</div>
+
+<form [formGroup]="editForm" class="formEdit">
+
+    <mat-form-field >            
+        <input matInput formControlName="name" placeholder="Nazwa"/>
+        <mat-error>
+            Nazwa jest <strong>wymagana</strong>!
+        </mat-error>
+    </mat-form-field>   
+
+    <mat-form-field >            
+        <input matInput formControlName="address" placeholder="Adres"/>
+        <mat-error>
+            Adres jest <strong>wymagany</strong>!
+        </mat-error>
+    </mat-form-field>   
+
+    <mat-form-field >            
+        <input matInput formControlName="email" placeholder="E-mail"/>
+        <mat-error>
+            E-mail jest <strong>wymagany</strong>!
+        </mat-error>
+    </mat-form-field> 
+
+    <mat-form-field >            
+        <input matInput formControlName="phoneNumber" placeholder="Telefon"/>
+        <mat-error>
+            Telefon jest <strong>wymagany</strong>!
+        </mat-error>
+    </mat-form-field> 
+
+    <mat-form-field> 
+        <input matInput formControlName="openHour" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1" placeholder="Otwarcie" readonly>
+        <owl-date-time #dtPicker1></owl-date-time>
+    </mat-form-field> 
+
+    <mat-form-field> 
+        <input matInput formControlName="closeHour" [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2" placeholder="Zamknięcie" readonly>
+        <owl-date-time #dtPicker2></owl-date-time>
+    </mat-form-field> 
+
+    <button mat-flat-button class="saveBtn" (click)="editRestaurant()">Zapisz</button>
+    <button mat-raised-button class="cancelBtn" (click)="cancel()">Anuluj</button>
+    
+</form>

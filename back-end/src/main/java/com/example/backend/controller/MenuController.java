@@ -21,38 +21,37 @@ public class MenuController {
     MenuService menuService;
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
-    @GetMapping("/menu-list")
+    @GetMapping("/menu/list")
     public Collection<Menu> getAllMenu(){
         return menuService.getAllMenu();
     }
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
-    @GetMapping("/dish-list")
-    public Collection<Dish> getAllDish(){
-
-        return menuService.getAllDish();
+    @GetMapping("/menu/list/active")
+    public Collection<Menu> getActiveMenu(){
+        return menuService.getActiveMenu();
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping(value = "menu-add")
+    @PostMapping(value = "menu/add")
     public void addMenu(@RequestBody Menu menu){
         menuService.addMenu(menu);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping(value = "menu-delete")
+    @PostMapping(value = "menu/delete")
     public void deleteMenu(@RequestBody Long id){
         menuService.deleteMenu(id);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping(value = "menu-edit")
+    @PutMapping(value = "menu/edit")
     public void editMenu(@RequestBody Menu menu){
         menuService.editMenu(menu);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping(value = "menu-active")
+    @PostMapping(value = "menu/active")
     public void activeMenu(@RequestBody Long id){
         menuService.activeMenu(id);
     }

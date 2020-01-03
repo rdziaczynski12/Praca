@@ -5,6 +5,7 @@ import { MenuService } from '../service/menu.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { Dish } from '../model/Dish';
+import { DishService } from '../service/dish.service';
 
 export interface DialogData {
   menu: Menu;
@@ -89,13 +90,14 @@ export class EditMenuDialog implements OnInit {
       Validators.required
     ]),
     dishes: new FormControl('', [
-      //Validators.required
+      Validators.required
     ]),
   });
 
   constructor(public dialogRef: MatDialogRef<EditMenuDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private menuService: MenuService,
+    private dishService: DishService
   ) {
   }
 
@@ -129,7 +131,7 @@ export class EditMenuDialog implements OnInit {
   }
 
   getAllDish(){
-    this.menuService.getAllDish().subscribe(data => {
+    this.dishService.getAllDish().subscribe(data => {
       this.dishs = data;
     });
   }
@@ -167,6 +169,7 @@ export class AddMenuDialog implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<AddMenuDialog>,
     private menuService: MenuService,
+    private dishService: DishService
   ) {
   }
 
@@ -192,7 +195,7 @@ export class AddMenuDialog implements OnInit {
   }
 
   getAllDish(){
-    this.menuService.getAllDish().subscribe(data => {
+    this.dishService.getAllDish().subscribe(data => {
       this.dishs = data;
       console.log(this.dishs);
     });

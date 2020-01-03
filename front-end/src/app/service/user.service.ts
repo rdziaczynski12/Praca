@@ -16,7 +16,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
   
   getAllUser(): Observable<any> {
-    return this.http.get(`${this.API}/user`);
+    return this.http.get(`${this.API}/user/list`);
   }
 
   addUser(user: User){
@@ -31,12 +31,12 @@ export class UserService {
     return this.http.put(`${this.API}/user/edit`, user, httpOptions);
   }
 
-  getAllMenu(): Observable<any> {
-    return this.http.get(`${this.API}/uber/menu`);
-  }
-
   activUser(id: Number){
     return this.http.post(`${this.API}/user/activ/${id}`, httpOptions);
+  }
+
+  getAllMenu(): Observable<any> {
+    return this.http.get(`${this.API}/uber/menu`);
   }
 
 }

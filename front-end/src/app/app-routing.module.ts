@@ -5,6 +5,10 @@ import {AdminPanelComponent} from './admin-panel/admin-panel.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
+import { DishListComponent } from './dish-list/dish-list.component';
+import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
+import { TypeDishListComponent } from './type-dish-list/type-dish-list.component';
+import { MenuClientComponent } from './menu-client/menu-client.component';
 
 
 const routes: Routes = [
@@ -13,6 +17,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'menu', component: MenuComponent},
+  { path: 'menu-client', component: MenuClientComponent},
+  { path: 'dish-list', component: DishListComponent},
+  { path: 'type-dish-list', component: TypeDishListComponent},
+  { path: 'restaurant-list', component: RestaurantListComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];

@@ -14,8 +14,6 @@ public class Dish {
 
     private String name;
 
-
-
     private String description;
 
     private boolean active;

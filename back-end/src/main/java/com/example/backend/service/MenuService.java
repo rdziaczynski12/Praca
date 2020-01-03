@@ -14,9 +14,6 @@ public class MenuService {
     @Autowired
     private MenuRepository menuRepository;
 
-    @Autowired
-    private DishRepository dishRepository;
-
     public Collection<Menu> getAllMenu(){
         return menuRepository.findAll();
     }
@@ -39,7 +36,10 @@ public class MenuService {
         menuRepository.saveAndFlush(menu);
     }
 
-    public Collection<Dish> getAllDish(){
-        return dishRepository.findAll();
+    public Collection<Menu> getActiveMenu(){
+        return menuRepository.findAll();
     }
+
+
+
 }
