@@ -15,21 +15,26 @@
                     <div class="typeDish"> |</div>
                 </mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
+            <mat-card-content class="cardContent">
                 <div>
                     {{dish.description}}
                 </div>
-                <!-- <button mat-raised-button class="buttons" [disabled]="menu.avtive" (click)="activeMenu(menu.id)">Aktywuj</button> -->
-                <button mat-raised-button class="buttons" (click)="deleteQuantity()">-</button>
-                <mat-form-field appearance="outline" class="fieldQuantity">
+                <button mat-raised-button class="buttons option" (click)="deleteQuantity(dish.id, menu.id)">-</button>
+                <mat-form-field appearance="outline" class="fieldQuantity option">
                     <mat-label>Ilość</mat-label>
-                    <input matInput placeholder="Placeholder">
+                    <input matInput placeholder="Placeholder" [value]="getQuantity(dish.id, menu.id)" disabled>
                     <mat-icon matSuffix>add_shopping_cart</mat-icon>
-                  </mat-form-field>
-                <button mat-raised-button class="buttons" (click)="addQuantity()">+</button>
+                </mat-form-field>
+                <button mat-raised-button class="buttons option" (click)="addQuantity(dish.id, menu.id)">+</button>
+                <div *ngIf="getQuantity(dish.id, menu.id)" class="sumDish option" >
+                  {{"+ " + (getQuantity(dish.id, menu.id)*dish.price/100  | number:'1.2-2') + " zł" }}
+                </div>
             </mat-card-content>
         </mat-card>
-        <button mat-flat-button class="addBtn" (click)="addOrder()">Zamów</button>
+        <div class="sumAll">
+          {{"Do zapłaty: " + (getSum(menu)/100 | number:'1.2-2') + " zł"}}
+        </div>
+        <button mat-flat-button class="addBtn" (click)="openAddOrder(menu)">Zamów</button>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

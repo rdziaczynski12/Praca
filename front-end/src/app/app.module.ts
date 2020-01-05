@@ -29,13 +29,17 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { MenuComponent, EditMenuDialog, AddMenuDialog } from './menu/menu.component';
 import { RestaurantListComponent, EditRestaurantDialog, AddRestaurantDialog    } from './restaurant-list/restaurant-list.component';
 import { DishListComponent, EditDishDialog, AddDishDialog  } from './dish-list/dish-list.component';
 import { TypeDishListComponent, EditTypeDishDialog, AddTypeDishDialog } from './type-dish-list/type-dish-list.component';
-import { MenuClientComponent } from './menu-client/menu-client.component';
+import { MenuClientComponent, AddOrderDialog } from './menu-client/menu-client.component';
+import { OrderAdminComponent } from './order-admin/order-admin.component';
+import { MyOrderComponent } from './my-order/my-order.component';
 
 
 @NgModule({
@@ -46,6 +50,7 @@ import { MenuClientComponent } from './menu-client/menu-client.component';
     EditUserDialog,
     EditMenuDialog,
     AddMenuDialog,
+    AddOrderDialog,
     EditDishDialog, 
     AddDishDialog,
     EditTypeDishDialog, 
@@ -59,6 +64,8 @@ import { MenuClientComponent } from './menu-client/menu-client.component';
     DishListComponent,
     TypeDishListComponent,
     MenuClientComponent,
+    OrderAdminComponent,
+    MyOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,11 +92,14 @@ import { MenuClientComponent } from './menu-client/menu-client.component';
     OwlNativeDateTimeModule,
     MatSelectModule,
     MatExpansionModule,
+    MatDividerModule,
+    MatListModule,
   ],
   entryComponents: [
     EditUserDialog,
     EditMenuDialog,
     AddMenuDialog,
+    AddOrderDialog,
     EditDishDialog, 
     AddDishDialog,
     EditRestaurantDialog,

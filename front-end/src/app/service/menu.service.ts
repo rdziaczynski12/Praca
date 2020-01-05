@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Menu } from '../model/menu';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { OrderDish } from '../model/orderDish';
 
 
 const httpOptions = {

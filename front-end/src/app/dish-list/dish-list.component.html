@@ -20,7 +20,7 @@
     
       <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef> Cena </th>
-        <td mat-cell *matCellDef="let dish"> {{dish.price}} </td>
+        <td mat-cell *matCellDef="let dish"> {{dish.price / 100 | number :'1.2-2'}} </td>
         <td><input></td>
       </ng-container>
           

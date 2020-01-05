@@ -26,23 +26,78 @@
 }
 
 .buttons {
-  margin-left: 5%;
-  width: 100px;
+
 }
 
 .addBtn{
   background: #0066ff;
   color: #fff;
   width: 100%;
-  margin-top: 15px;
+  margin-top: 35px;
+}
+
+.cardContent{
+  width: 100%;
 }
 
 .fieldQuantity{
   text-align: center;
-  width: 100px;
-  margin-left: 50px;
+  
 }
 
+.option{
+  height: 50px;
+  width: 100px;
+  margin-left: 5%;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.sumDish{
+  width: 300px;
+  text-align: right;
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+.sumAll{
+  position: relative;
+  right: 20px;
+  text-align: right;
+  width: calc(100% - 20px);
+  font-size: 30px;
+
+}
+
+.field{
+  width: 300px;
+}
+
+.name{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.quantity{
+ 
+
+}
+
+.line{
+
+}
+
+.price{
+  position: relative;
+  bottom: 20px;
+  text-align: right;
+}
+
+.sum{
+  text-align: center;
+  font-weight: 700;
+  font-size: 25px;
+}
 
 
 

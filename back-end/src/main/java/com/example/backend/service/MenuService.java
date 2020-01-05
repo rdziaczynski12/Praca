@@ -37,7 +37,7 @@ public class MenuService {
     }
 
     public Collection<Menu> getActiveMenu(){
-        return menuRepository.findAll();
+        return menuRepository.getActiveMenu();
     }
 
 

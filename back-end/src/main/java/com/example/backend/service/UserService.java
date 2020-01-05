@@ -47,4 +47,8 @@ public class UserService {
             user.setActiv(!user.getActiv());
             userRepository.saveAndFlush(user);
     }
+
+    public User getUserByUserName(String userName){
+        return userRepository.findByUsername(userName).get();
+    }
 }

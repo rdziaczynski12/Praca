@@ -41,6 +41,7 @@ export class AppComponent {
   links : Link []= [
     {name : 'Strona główna' , link :'/home'},
     {name : 'Menu' , link :'/menu-client'},
+    {name : 'Moje zamówienia' , link :'/my-order'},
     {name : 'Zaloguj' , link :'/login'},
     {name : 'Rejestracja' , link :'/register'}
   ];

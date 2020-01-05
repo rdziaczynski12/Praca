@@ -9,6 +9,8 @@ import { DishListComponent } from './dish-list/dish-list.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { TypeDishListComponent } from './type-dish-list/type-dish-list.component';
 import { MenuClientComponent } from './menu-client/menu-client.component';
+import { MyOrderComponent } from './my-order/my-order.component';
+import { OrderAdminComponent } from './order-admin/order-admin.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'menu', component: MenuComponent},
   { path: 'menu-client', component: MenuClientComponent},
+  { path: 'my-order', component: MyOrderComponent},
+  { path: 'order-admin', component: OrderAdminComponent},
   { path: 'dish-list', component: DishListComponent},
   { path: 'type-dish-list', component: TypeDishListComponent},
   { path: 'restaurant-list', component: RestaurantListComponent},
