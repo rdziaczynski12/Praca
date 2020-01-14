@@ -1,8 +1,8 @@
 <div class="container">
-    <div style="height: 100%;" *ngIf="isLoggedIn; else loggedOut">
+    <div *ngIf="isLogin; else loginFormTemplate">
         <h2 class="title">Jesteś już zalogowany!</h2>
     </div>
-    <ng-template #loggedOut class="content">
+    <ng-template #loginFormTemplate class="content">
         <mat-card class="loginCard">
           <mat-card-header>
             <mat-card-title><h2>Zaloguj się!</h2></mat-card-title>

@@ -65,7 +65,7 @@ export class DishListComponent implements OnInit {
   }
 
 }
-
+//Edit///////////////
 
 @Component({
   selector: 'app-dish-list',
@@ -86,7 +86,9 @@ export class EditDishDialog implements OnInit {
       Validators.required
     ]),
     price: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.pattern('[0-9.]*'),
+      Validators.min(0)
     ]),
     restaurant: new FormControl('', [
       Validators.required
@@ -110,7 +112,7 @@ export class EditDishDialog implements OnInit {
     this.getAllTypeDish();
     this.editForm.get('name').setValue(this.dish.name);
     this.editForm.get('description').setValue(this.dish.description);
-    this.editForm.get('price').setValue(this.dish.price);
+    this.editForm.get('price').setValue(this.dish.price.valueOf() / 100.0);
     this.editForm.get('restaurant').setValue(this.dish.restaurant);
     this.editForm.get('type').setValue(this.dish.types);
   }
@@ -123,7 +125,7 @@ export class EditDishDialog implements OnInit {
     if(this.editForm.valid) {
       this.dish.name = this.editForm.get('name').value;
       this.dish.description = this.editForm.get('description').value;
-      this.dish.price = this.editForm.get('price').value;
+      this.dish.price = this.editForm.get('price').value * 100;
       this.dish.restaurant = this.editForm.get('restaurant').value;
       this.dish.types = this.editForm.get('type').value;
       this.dishService.editDish(this.dish).subscribe(data => {
@@ -142,6 +144,10 @@ export class EditDishDialog implements OnInit {
     this.typeDishService.getAllTypeDish().subscribe(data => {
       this.types = data;
     })
+  }
+
+  comparer(d1: any, d2: any): boolean {
+    return d1 && d2 ? d1.id === d2.id : d1 === d2;
   }
 
 }
@@ -169,7 +175,9 @@ export class AddDishDialog implements OnInit {
       Validators.required
     ]),
     price: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.pattern('[0-9.]*'),
+      Validators.min(0)
     ]),
     restaurant: new FormControl('', [
       Validators.required
@@ -201,7 +209,7 @@ export class AddDishDialog implements OnInit {
     if(this.addForm.valid) {
       this.dish.name = this.addForm.get('name').value;
       this.dish.description = this.addForm.get('description').value;
-      this.dish.price = this.addForm.get('price').value;
+      this.dish.price = this.addForm.get('price').value * 100;
       this.dish.restaurant = this.addForm.get('restaurant').value;
       this.dish.types = this.addForm.get('type').value;
       this.dishService.addDish(this.dish).subscribe(data => {

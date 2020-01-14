@@ -1,6 +1,6 @@
 <div class="container">
-  <div *ngIf="isSignedUp; else signupForm">
-    Your registration is successful. Please login!
+  <div *ngIf="isLogin; else signupForm">
+    <h2 class="title">Jesteś już zalogowany!</h2>
   </div>
   <ng-template #signupForm class="content">
       <mat-card class="registerCard">

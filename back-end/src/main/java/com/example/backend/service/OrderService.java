@@ -25,6 +25,25 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    public Collection<OrderDish> getOrderDish(Order order){
+        return orderDishRepository.findByOrder(order);
+    }
+
+    public Collection<Order> getOrderByMenu(Menu menu){
+        return orderRepository.findByMenu(menu);
+    }
+
+    public Collection<Order> getOrderByUser(String userName){
+            User user = userService.getUserByUserName(userName);
+            return orderRepository.findByUser(user);
+    }
+
+    public void paidOrder(Long idOrder){
+        Order order = orderRepository.findById(idOrder).get();
+        order.setPaid(true);
+        orderRepository.saveAndFlush(order);
+    }
+
     public void deleteOrder(Long id){
         orderRepository.deleteById(id);
     }

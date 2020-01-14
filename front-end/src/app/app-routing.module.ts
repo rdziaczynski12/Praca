@@ -11,6 +11,7 @@ import { TypeDishListComponent } from './type-dish-list/type-dish-list.component
 import { MenuClientComponent } from './menu-client/menu-client.component';
 import { MyOrderComponent } from './my-order/my-order.component';
 import { OrderAdminComponent } from './order-admin/order-admin.component';
+import { OrderUserComponent } from './order-user/order-user.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'menu-client', component: MenuClientComponent},
   { path: 'my-order', component: MyOrderComponent},
   { path: 'order-admin', component: OrderAdminComponent},
+  { path: 'order-user', component: OrderUserComponent},
   { path: 'dish-list', component: DishListComponent},
   { path: 'type-dish-list', component: TypeDishListComponent},
   { path: 'restaurant-list', component: RestaurantListComponent},

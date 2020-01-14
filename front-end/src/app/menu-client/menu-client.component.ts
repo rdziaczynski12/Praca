@@ -28,6 +28,7 @@ export class MenuClientComponent implements OnInit {
   i: number = 0;
   orderDishs: Set<OrderDish> = new Set();
   orderDish: OrderDish = new OrderDish();
+  isLoading: boolean = false;
   //order: Order = new Order();
   constructor(
     private menuService: MenuService,
@@ -42,6 +43,7 @@ export class MenuClientComponent implements OnInit {
     this.menuService.getActiveMenu().subscribe(date => {
       this.menuList = date;
       this.clearIOrder();
+      this.isLoading = true;
     });
   }
 

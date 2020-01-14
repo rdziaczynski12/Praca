@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from './auth/token-storage.service';
+import { Router } from '@angular/router';
 
-export interface Link{
-  name : String;
-  link : String;
-}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,39 +10,36 @@ export interface Link{
 export class AppComponent {
 
   private roles: string[];
-  private authority: string;
   public showSideNav = false;
-  constructor(private tokenStorage: TokenStorageService) { }
+  private activeLink = window.location.pathname;
+  constructor(private tokenStorage: TokenStorageService,
+    private router: Router) { }
  
   ngOnInit() {
-    if (this.tokenStorage.getToken()) {
-      this.roles = this.tokenStorage.getAuthorities();
-      this.roles.every(role => {
-        if (role === 'ROLE_ADMIN') {
-          this.authority = 'admin';
-          return false;
-        } else if (role === 'ROLE_PM') {
-          this.authority = 'pm';
-          return false;
-        }
-        this.authority = 'user';
-        return true;
-      });
-    }
   }
 
   showMenu(){
     this.showSideNav=!this.showSideNav;
   }
 
-  links : Link []= [
-    {name : 'Strona główna' , link :'/home'},
-    {name : 'Menu' , link :'/menu-client'},
-    {name : 'Moje zamówienia' , link :'/my-order'},
-    {name : 'Zaloguj' , link :'/login'},
-    {name : 'Rejestracja' , link :'/register'}
-  ];
+  updateActiveLink(){
+      this.activeLink = window.location.pathname;
+  }
 
-  activeLink = window.location.pathname;
+  isLogin():boolean {
+    return this.tokenStorage.isLogin();
+  }
+
+  isAdmin(): boolean {
+    return this.tokenStorage.isAdmin();
+  }
+   
+  logout() {
+    this.tokenStorage.signOut();
+    this.router.navigate(['/login']).finally(function() {
+      window.location.reload();
+    });
+    
+  }
 
 }

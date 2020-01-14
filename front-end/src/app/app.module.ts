@@ -40,6 +40,8 @@ import { TypeDishListComponent, EditTypeDishDialog, AddTypeDishDialog } from './
 import { MenuClientComponent, AddOrderDialog } from './menu-client/menu-client.component';
 import { OrderAdminComponent } from './order-admin/order-admin.component';
 import { MyOrderComponent } from './my-order/my-order.component';
+import { OrderUserComponent } from './order-user/order-user.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -66,6 +68,7 @@ import { MyOrderComponent } from './my-order/my-order.component';
     MenuClientComponent,
     OrderAdminComponent,
     MyOrderComponent,
+    OrderUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +97,7 @@ import { MyOrderComponent } from './my-order/my-order.component';
     MatExpansionModule,
     MatDividerModule,
     MatListModule,
+    MatProgressSpinnerModule,
   ],
   entryComponents: [
     EditUserDialog,

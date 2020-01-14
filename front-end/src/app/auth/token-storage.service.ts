@@ -49,4 +49,21 @@ export class TokenStorageService {
  
     return this.roles;
   }
+
+  public isLogin(): boolean{
+    let islogin = false;
+    if(this.getToken()) 
+      islogin = true;
+    return islogin;
+  }
+
+  public isAdmin(): boolean{
+    let isAdmin = false;
+    let roles = this.getAuthorities();
+    roles.forEach(role => {
+      if(role === 'ROLE_ADMIN')
+        isAdmin = true;
+    });
+    return isAdmin;
+  }
 }

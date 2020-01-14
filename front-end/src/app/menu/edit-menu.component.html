@@ -21,7 +21,7 @@
 
     <mat-form-field>
         <mat-label>Dania</mat-label>
-        <mat-select  multiple formControlName="dishes">
+        <mat-select  multiple formControlName="dishes" [compareWith]="comparer">
           <mat-option *ngFor="let dish of dishs" [value]="dish">{{dish.name}} - {{dish.price / 100.0}} zł</mat-option>
         </mat-select>
       </mat-form-field>

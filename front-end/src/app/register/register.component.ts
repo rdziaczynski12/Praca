@@ -5,6 +5,7 @@ import { SignUpInfo } from '../auth/signup-info';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { TokenStorageService } from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -15,9 +16,7 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 export class RegisterComponent implements OnInit {
   form: any = {};
   signupInfo: SignUpInfo;
-  isSignedUp = false;
-  isSignUpFailed = false;
-  errorMessage = '';
+  isLogin = false;
   password = '';
  
   registerForm = new FormGroup({
@@ -55,10 +54,12 @@ export class RegisterComponent implements OnInit {
  
   constructor(private authService: AuthService,
               private router: Router,
-              public snackBar: MatSnackBar
+              public snackBar: MatSnackBar,
+              private tokenStorage: TokenStorageService
     ) { }
  
   ngOnInit() { 
+    this.isLogin = this.tokenStorage.isLogin();
   }
  
   register() {
@@ -68,7 +69,6 @@ export class RegisterComponent implements OnInit {
       Validators.pattern(this.password)
     ]);
     this.registerForm.controls.repeatPassword.updateValueAndValidity();
-    console.log(this.registerForm.value.password);
     this.signupInfo = new SignUpInfo(
       this.registerForm.value.firstName,
       this.registerForm.value.lastName,
@@ -79,15 +79,20 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.valid)
       this.authService.signUp(this.signupInfo).subscribe(
         data => {
-          console.log(data);
-          this.isSignedUp = true;
-          this.isSignUpFailed = false;
+          this.openSnackBar("Rejestracja udana! \n Zaloguj się");
+          this.router.navigate(['/login']);
         },
         error => {
           console.log(error);
-          this.errorMessage = error.error.message;
-          this.isSignUpFailed = true;
+          this.openSnackBar("Rejestracja nie udana! \n" + error.error.message);
         }
       );
+  }
+
+  openSnackBar(text: string): void {
+    this.snackBar.open(text, 'Zamknij', {
+      duration: 3000,
+      verticalPosition: 'top'
+    });
   }
 }

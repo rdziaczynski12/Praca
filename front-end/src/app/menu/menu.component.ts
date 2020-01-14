@@ -136,6 +136,10 @@ export class EditMenuDialog implements OnInit {
     });
   }
 
+  comparer(d1: any, d2: any): boolean {
+    return d1 && d2 ? d1.id === d2.id : d1 === d2;
+  }
+
 }
 
 //Add

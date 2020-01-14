@@ -1,1 +1,42 @@
-<p>my-order works!</p>
+<div class="content">
+  <mat-accordion *ngIf="isLoading; else notLoading">
+    <mat-expansion-panel *ngFor="let order of orders" (opened)="getOrderDish(order)">
+      <mat-expansion-panel-header class="header">
+          <mat-panel-title class="title">
+            <b>Zamówienie: {{order.date | date: 'dd/MM/yyyy HH:mm'}}</b>
+          </mat-panel-title>
+          <mat-panel-description class="paid" *ngIf="order.paid">
+            ROZLICZONE
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="content">
+        <mat-list>
+            <mat-list-item>
+                    <div>Termin odbioru: {{order.menu.deliveryTime | date: 'dd/MM/yyyy HH:mm'}}</div>
+                    <mat-divider></mat-divider>
+            </mat-list-item>
+            <mat-list-item *ngFor="let orderDish of orderDishs" >
+                    <div class="name">{{orderDish.dish.name}}</div>
+                    <div class="quantity">X {{orderDish.quantity}}</div>
+                    <!-- <div class="field price">{{"+ " + (orderDish.quantity*orderDish.dish.price/100  | number:'1.2-2') + " zł" }}</div> -->
+                    <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+        <div class="sum">
+            {{"Razem: " + (order.totalCost / 100 | number:'1.2-2') + " zł"}}
+        </div>
+        
+    </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="!orders.length" disabled=true>
+      <mat-expansion-panel-header>
+          <mat-panel-title>
+            <b>Brak zamówień</b>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <ng-template #notLoading>
+    <mat-spinner class="spinner" mode="indeterminate"></mat-spinner>
+  </ng-template>
+</div>

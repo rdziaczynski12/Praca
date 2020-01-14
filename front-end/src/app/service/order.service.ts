@@ -35,4 +35,20 @@ export class OrderService {
     return this.http.post(`${this.API}/order-dish/add`, orderDish, httpOptions);
   }
 
+  getOrderByUser(userName: String): Observable<any> {
+    return this.http.post(`${this.API}/order/list-user`, userName, httpOptions);
+  }
+
+  getOrderByMenu(menu: Menu): Observable<any> {
+    return this.http.post(`${this.API}/order/list-menu`, menu, httpOptions);
+  }
+
+  orderPaid(idOrder: Number){
+    this.http.post(`${this.API}/order/paid`, idOrder, httpOptions);
+  }
+
+  getOrderDish(order: Order): Observable<any> {
+    return this.http.post(`${this.API}/order-dish/list`, order, httpOptions);
+  }
+
 }

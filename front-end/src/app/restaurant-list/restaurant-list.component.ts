@@ -191,6 +191,7 @@ export class AddRestaurantDialog implements OnInit {
   }
 
   addRestaurant(){
+    
     if(this.addForm.valid) {
       this.restaurant.name = this.addForm.get('name').value;
       this.restaurant.address = this.addForm.get('address').value;
