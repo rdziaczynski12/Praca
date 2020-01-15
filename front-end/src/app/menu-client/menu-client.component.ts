@@ -5,6 +5,7 @@ import { OrderDish } from '../model/orderDish';
 import { OrderService } from '../service/order.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 export interface DialogData {
   menu: Menu;
@@ -34,7 +35,8 @@ export class MenuClientComponent implements OnInit {
     private menuService: MenuService,
     private orderService: OrderService,
     private tokenStorageService: TokenStorageService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) { 
     
   }
@@ -48,18 +50,26 @@ export class MenuClientComponent implements OnInit {
   }
 
   openAddOrder(menu: Menu){
+    //let flaga = false;
     const dialogRef = this.dialog.open(AddOrderDialog, {
       width: '450px',
       data: { menu: menu, iOrder: this.iOrder}
     });
-    dialogRef.afterClosed().subscribe(result => {
-      if(result != null) {
-        this.addOrder(menu);
-      }
-    });
+    // menu.dishes.forEach(dish => {
+    //   this.tmp=[menu.id,dish.id];
+    //   if(this.iOrder.get(this.tmp.toString())>0)
+    //     flaga = true;
+    // });
+    // if(flaga)
+      dialogRef.afterClosed().subscribe(result => {
+        if(result != null) {
+          this.addOrder(menu);
+        }
+      });
   }
 
-  addOrder(menu: Menu) {
+  addOrder(menu: Menu){
+    this.isLoading = false;
     this.orderService.addOrder(menu, this.tokenStorageService.getUsername()).subscribe(data => {
       this.menuList.forEach(m => {
         if(m == menu){
@@ -82,6 +92,11 @@ export class MenuClientComponent implements OnInit {
         this.i++;
       });
       this.orderDishs = new Set();
+      
+      setTimeout(() => {
+        this.isLoading = true;
+        this.router.navigate(['/my-order']);
+      }, this.i * 500);
       this.clearIOrder();
     });
 

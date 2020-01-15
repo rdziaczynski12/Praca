@@ -10,6 +10,6 @@ import java.util.Collection;
 @Repository
 public interface MenuRepository  extends JpaRepository<Menu, Long> {
 
-    @Query("SELECT m FROM Menu m WHERE m.avtive = true  AND m.startDate <  CURRENT_TIMESTAMP AND m.finishDate >  CURRENT_TIMESTAMP ")
+    @Query("SELECT m FROM Menu m WHERE m.avtive = true  AND m.startDate <  CURRENT_TIMESTAMP AND m.finishDate >  CURRENT_TIMESTAMP order by m.deliveryTime")
     Collection<Menu> getActiveMenu();
 }

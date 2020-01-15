@@ -25,6 +25,10 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    public Collection<Order> findByPaidFalse(){
+        return orderRepository.findByPaidFalse();
+    }
+
     public Collection<OrderDish> getOrderDish(Order order){
         return orderDishRepository.findByOrder(order);
     }
@@ -35,13 +39,22 @@ public class OrderService {
 
     public Collection<Order> getOrderByUser(String userName){
             User user = userService.getUserByUserName(userName);
-            return orderRepository.findByUser(user);
+            return orderRepository.findByUserOrderByDate(user);
     }
 
     public void paidOrder(Long idOrder){
         Order order = orderRepository.findById(idOrder).get();
         order.setPaid(true);
         orderRepository.saveAndFlush(order);
+    }
+
+    public void paidOrderUser(String userName){
+        User user = userService.getUserByUserName(userName);
+        Collection<Order> orders = orderRepository.findByUserAndPaidFalse(user);
+        orders.forEach(order -> {
+            order.setPaid(true);
+            orderRepository.saveAndFlush(order);
+        });
     }
 
     public void deleteOrder(Long id){

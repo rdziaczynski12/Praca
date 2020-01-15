@@ -12,5 +12,7 @@ import java.util.Optional;
 @Repository
 public interface OrderRepository  extends JpaRepository<Order, Long> {
     Collection<Order> findByMenu(Menu menu);
-    Collection<Order> findByUser(User user);
+    Collection<Order> findByUserOrderByDate(User user);
+    Collection<Order> findByUserAndPaidFalse(User user);
+    Collection<Order> findByPaidFalse();
 }

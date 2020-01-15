@@ -66,4 +66,14 @@ export class TokenStorageService {
     });
     return isAdmin;
   }
+
+  public isUser(): boolean{
+    let isUser = false;
+    let roles = this.getAuthorities();
+    roles.forEach(role => {
+      if(role === 'ROLE_ACTIVE_USER')
+        isUser = true;
+    });
+    return isUser;
+  }
 }

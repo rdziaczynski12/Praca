@@ -23,43 +23,55 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/order/list")
     public Collection<Order> getAllOrder(){
         return orderService.getAllOrder();
     }
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/order-not-paid/list")
+    public Collection<Order> findByPaidFalse(){
+        return orderService.findByPaidFalse();
+    }
+
+    @PreAuthorize("hasRole('ROLE_ACTIVE_USER') or hasRole('ADMIN')")
     @PostMapping("/order-dish/list")
     public Collection<OrderDish> getOrderDish(@RequestBody Order order){
         return orderService.getOrderDish(order);
     }
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @PostMapping("/order/list-menu")
     public Collection<Order> getOrderByMenu(@RequestBody Menu menu){
         return orderService.getOrderByMenu(menu);
     }
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ROLE_ACTIVE_USER') or hasRole('ADMIN')")
     @PostMapping("/order/list-user")
     public Collection<Order> getOrderByUser(@RequestBody String userName){
         return orderService.getOrderByUser(userName);
     }
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/order/paid")
     public void paidOrder(@RequestBody Long idOrder){
         orderService.paidOrder(idOrder);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/order/paid-user")
+    public void paidOrderUser(@RequestBody String userName){
+        orderService.paidOrderUser(userName);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ACTIVE_USER') or hasRole('ADMIN')")
     @PostMapping(value = "order/add/{userName}")
     public Order addOrder(@RequestBody Menu menu , @PathVariable(name="userName")String userName) {
         return orderService.addOrder(menu, userName);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ACTIVE_USER') or hasRole('ADMIN')")
     @PostMapping(value = "order-dish/add")
     public OrderDish addOrderDish(@RequestBody OrderDish orderDish) {
         return orderService.addOrderDish(orderDish);

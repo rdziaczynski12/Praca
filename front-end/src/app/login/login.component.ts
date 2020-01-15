@@ -46,18 +46,22 @@ export class LoginComponent implements OnInit {
             this.tokenStorage.saveToken(data.accessToken);
             this.tokenStorage.saveUsername(data.username);
             this.tokenStorage.saveAuthorities(data.authorities);
+            if(!this.tokenStorage.isUser())
+              this.openSnackBar('Twoje konto jest nie aktywne skontaktuj się z administratorem!');
+            else
+              this.openSnackBar('Witamy!');
             this.router.navigate(['home']);
         },
         error => {
           console.log(error);
-          this.openSnackBar();
+          this.openSnackBar('Niepoprawny login lub hasło !');
         }
       );
   }
 
-  openSnackBar(): void {
-    this.snackBar.open('Niepoprawny login lub hasło !', 'Zamknij', {
-      duration: 3000,
+  openSnackBar(text: string,): void {
+    this.snackBar.open(text, 'Zamknij', {
+      duration: 5000,
       verticalPosition: 'top'
     });
   }

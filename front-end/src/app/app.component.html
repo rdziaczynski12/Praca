@@ -2,8 +2,8 @@
     <mat-drawer-content id="allContent">
       <nav mat-tab-nav-bar backgroundColor="primary" class="topNav">
         <a mat-tab-link (click)="activeLink = '/home'" routerLink="/home" [active]="activeLink == '/home'"> Strona główna </a>
-        <a mat-tab-link *ngIf="isLogin()" (click)="activeLink = '/menu-client'" routerLink="/menu-client" [active]="activeLink == '/menu-client'"> Menu </a>
-        <a mat-tab-link *ngIf="isLogin()" (click)="activeLink = '/my-order'" routerLink="/my-order" [active]="activeLink == '/my-order'"> Moje zamówienia </a>
+        <a mat-tab-link *ngIf="isUser()" (click)="activeLink = '/menu-client'" routerLink="/menu-client" [active]="activeLink == '/menu-client'"> Menu </a>
+        <a mat-tab-link *ngIf="isUser()" (click)="activeLink = '/my-order'" routerLink="/my-order" [active]="activeLink == '/my-order'"> Moje zamówienia </a>
         <a mat-tab-link (click)="activeLink = '/login'" *ngIf="!isLogin()" routerLink="/login" [active]="activeLink == '/login'"> Zaloguj </a>
         <a mat-tab-link (click)="activeLink = '/register'" *ngIf="!isLogin()" routerLink="/register" [active]="activeLink == '/register'"> Rejestracja </a>
         <a mat-tab-link (click)="logout()" *ngIf="isLogin()"> Wyloguj </a>
@@ -26,8 +26,9 @@
       <a routerLink="/type-dish-list"> Typy dań </a><br/>
       <a routerLink="/restaurant-list"> Restauracje </a><br/>
       <a routerLink="/order-admin"> Zamówienia </a><br/>
-      <a routerLink="/admin-panel"> Użytkownicy </a>
+      <a routerLink="/admin-panel"> Użytkownicy </a><br/>
       <a routerLink="/order-user"> Zamówienia użytkowników </a><br/>
+      <a routerLink="/order-paid"> Zamówienia do zapłaty </a><br/>
 
     </mat-drawer>
   

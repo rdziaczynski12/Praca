@@ -51,4 +51,12 @@ export class OrderService {
     return this.http.post(`${this.API}/order-dish/list`, order, httpOptions);
   }
 
+  getAllOrderNotPaid(): Observable<any> {
+    return this.http.get(`${this.API}/order-not-paid/list`, httpOptions);
+  }
+
+  paidOrderUser(userName: String){
+    return this.http.post(`${this.API}/order/paid-user`, userName, httpOptions);
+  }
+
 }

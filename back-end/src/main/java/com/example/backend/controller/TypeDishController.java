@@ -18,7 +18,7 @@ public class TypeDishController {
     @Autowired
     TypeDishService typeDishService;
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ROLE_ACTIVE_USER') or hasRole('ADMIN')")
     @GetMapping("/type/dish/list")
     public Collection<TypeDish> getAllTypeDish(){ return typeDishService.getAllTypeDish(); }
 

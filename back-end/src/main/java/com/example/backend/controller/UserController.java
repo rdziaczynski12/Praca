@@ -19,19 +19,19 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/user/list")
     public Collection<User> getAllUser(){
         return userService.getAllUser();
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(value = "user/delete/{id}")
     public void deleteUser(@PathVariable(name = "id") Long id){
         userService.deleteUser(id);
     }
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(value = "user/edit")
     public void editUser(@RequestBody User user){
         userService.editUser(user);

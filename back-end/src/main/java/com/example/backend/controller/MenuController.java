@@ -20,13 +20,13 @@ public class MenuController {
     @Autowired
     MenuService menuService;
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/menu/list")
     public Collection<Menu> getAllMenu(){
         return menuService.getAllMenu();
     }
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ROLE_ACTIVE_USER') or hasRole('ADMIN')")
     @GetMapping("/menu/list/active")
     public Collection<Menu> getActiveMenu(){
         return menuService.getActiveMenu();

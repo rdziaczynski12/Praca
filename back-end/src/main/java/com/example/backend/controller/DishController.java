@@ -19,7 +19,7 @@ public class DishController {
     @Autowired
     DishService dishService;
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ROLE_ACTIVE_USER') or hasRole('ADMIN')")
     @GetMapping("/dish/list")
     public Collection<Dish> getAllRestaurant(){ return dishService.getAllDish(); }
 

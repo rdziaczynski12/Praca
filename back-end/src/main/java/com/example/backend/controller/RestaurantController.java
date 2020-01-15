@@ -17,7 +17,7 @@ public class RestaurantController {
     @Autowired
     RestaurantService restaurantService;
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ROLE_ACTIVE_USER') or hasRole('ADMIN')")
     @GetMapping("/restaurant/list")
     public Collection<Restaurant> getAllRestaurant(){ return restaurantService.getAllRestaurant(); }
 

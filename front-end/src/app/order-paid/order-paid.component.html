@@ -1,0 +1,55 @@
+<div class="container">
+    <table mat-table [dataSource]="table" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let date"> {{date.user.id}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> Imię </th>
+        <td mat-cell *matCellDef="let date"> {{date.user.firstName}} </td>
+        <td><input></td>
+      </ng-container>
+  
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Nazwisko </th>
+        <td mat-cell *matCellDef="let date"> {{date.user.lastName}} </td>
+        <td><input></td>
+      </ng-container>
+    
+      <ng-container matColumnDef="cost">
+        <th mat-header-cell *matHeaderCellDef> Do zapłaty </th>
+        <td mat-cell *matCellDef="let date"> {{date.cost / 100.0 | number:'1.2-2'}} zł </td>
+        <td><input></td>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Okres </th>
+        <td mat-cell *matCellDef="let date">
+            <ng-container *ngIf="(date.timeStart | date: 'dd/MM/yyyy' ) < (date.timeFinish | date: 'dd/MM/yyyy'); else oneDay">
+                Od: {{date.timeStart | date: 'dd/MM/yyyy' }} <br/> Do: {{date.timeFinish | date: 'dd/MM/yyyy' }} 
+            </ng-container>
+            <ng-template #oneDay>
+                {{date.timeStart | date: 'dd/MM/yyyy'}} 
+            </ng-template>
+        </td>
+
+        <td><input></td>
+      </ng-container>
+    
+      <ng-container matColumnDef="paid">
+        <th mat-header-cell *matHeaderCellDef>Rozlicz</th>
+        <td mat-cell *matCellDef="let date"> 
+            <button mat-icon-button class="paidButton" (click)="paidOrderUser(date.user.username)">
+              <mat-icon>credit_card</mat-icon>
+            </button>
+        </td>
+        </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+    </table>
+    
+</div>

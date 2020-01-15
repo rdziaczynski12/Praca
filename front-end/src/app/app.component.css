@@ -8,10 +8,13 @@
 .content {
     display: flex;
     min-height:  calc(100% - 48px);
+    position: relative;
+    top: 48px;
   }
 
 .buttonSideNav {
   position: fixed;
+  top: 48px;
   min-width: 30px;
   height: 40px;
   background-color: #3f51b5;
@@ -27,13 +30,16 @@
   
 .sideNav {
     padding: 20px;
-    position: absolute;
+    position: fixed;
     top: 48px;
     width: 200px;
   }
 
 .topNav {
     width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
 }
 
 #allContent {

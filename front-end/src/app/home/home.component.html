@@ -1,13 +1,14 @@
 <div *ngIf="info.token; else loggedOut">
-  <h5 class="text-primary">Your Information</h5>
+  <!-- <h5 class="text-primary">Your Information</h5>
   <p>
     <strong>Username:</strong> {{info.username}}<br/>
     <strong>Roles:</strong> {{info.authorities}}<br />
     <strong>Token:</strong> {{info.token}}.
   </p>
-  <button class="btn btn-secondary" (click)="logout()">Logout</button>
+  <button class="btn btn-secondary" (click)="logout()">Logout</button> -->
+  <h1 style="text-align: center;">Witamy w aplikacji!</h1>
 </div>
  
 <ng-template #loggedOut>
-  Please login.
+  <h1 style="text-align: center;">Proszę się zalogować</h1>
 </ng-template>

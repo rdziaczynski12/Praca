@@ -33,6 +33,10 @@ export class AppComponent {
   isAdmin(): boolean {
     return this.tokenStorage.isAdmin();
   }
+
+  isUser(): boolean {
+    return this.tokenStorage.isUser();
+  }
    
   logout() {
     this.tokenStorage.signOut();

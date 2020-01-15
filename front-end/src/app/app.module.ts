@@ -42,6 +42,7 @@ import { OrderAdminComponent } from './order-admin/order-admin.component';
 import { MyOrderComponent } from './my-order/my-order.component';
 import { OrderUserComponent } from './order-user/order-user.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { OrderPaidComponent } from './order-paid/order-paid.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     OrderAdminComponent,
     MyOrderComponent,
     OrderUserComponent,
+    OrderPaidComponent,
   ],
   imports: [
     BrowserModule,
