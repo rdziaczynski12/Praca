@@ -18,6 +18,10 @@ public class MenuService {
         return menuRepository.findAll();
     }
 
+    public Collection<Menu> getNotArchiveMenu(){
+        return menuRepository.findByArchiveIsFalse();
+    }
+
     public void deleteMenu(Long id){
         menuRepository.deleteById(id);
     }
@@ -33,6 +37,14 @@ public class MenuService {
     public void activeMenu(Long id){
         Menu menu = menuRepository.findById(id).get();
         menu.setAvtive(!menu.isAvtive());
+        menuRepository.saveAndFlush(menu);
+    }
+
+    public void archiveMenu(Long id){
+        Menu menu = menuRepository.findById(id).get();
+        menu.setArchive(!menu.isArchive());
+        if(menu.isAvtive())
+            menu.setAvtive(false);
         menuRepository.saveAndFlush(menu);
     }
 

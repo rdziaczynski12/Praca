@@ -35,4 +35,11 @@ export class MenuService {
   getActiveMenu(): Observable<any> {
     return this.http.get(`${this.API}/menu/list/active`, httpOptions);
   }
+  archiveMenu(id: Number){
+    return this.http.post(`${this.API}/menu/archive`, id, httpOptions);
+  }
+  getNotArchiveMenu(): Observable<any> {
+    return this.http.get(`${this.API}/menu/list/not-archive`, httpOptions);
+  }
+  
 }

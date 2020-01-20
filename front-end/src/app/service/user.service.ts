@@ -39,4 +39,18 @@ export class UserService {
     return this.http.get(`${this.API}/uber/menu`);
   }
 
+  getUserData(userName: String): Observable<any> {
+    return this.http.get(`${this.API}/user/data/${userName}`);
+  }
+
+  changePassword(userName: String, password: String, newPassword: String): Observable<any>{
+    const body = {userName: userName, password: password, newPassword: newPassword}
+    return this.http.post(`${this.API}/user/change/password`, body, httpOptions);
+  }
+
+  changeEmail(userName: String, email: String): Observable<any>{
+    const body = {userName: userName, email: email}
+    return this.http.post(`${this.API}/user/change/email`, body, httpOptions);
+  }
+
 }

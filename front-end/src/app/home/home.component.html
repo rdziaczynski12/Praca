@@ -1,14 +1,24 @@
-<div *ngIf="info.token; else loggedOut">
-  <!-- <h5 class="text-primary">Your Information</h5>
-  <p>
-    <strong>Username:</strong> {{info.username}}<br/>
-    <strong>Roles:</strong> {{info.authorities}}<br />
-    <strong>Token:</strong> {{info.token}}.
-  </p>
-  <button class="btn btn-secondary" (click)="logout()">Logout</button> -->
-  <h1 style="text-align: center;">Witamy w aplikacji!</h1>
+<div class="content">
+  <div *ngIf="info.token; else loggedOut">
+    <!-- <h5 class="text-primary">Your Information</h5>
+    <p>
+      <strong>Username:</strong> {{info.username}}<br/>
+      <strong>Roles:</strong> {{info.authorities}}<br />
+      <strong>Token:</strong> {{info.token}}.
+    </p>
+    <button class="btn btn-secondary" (click)="logout()">Logout</button> -->
+    <img src="https://foter.com/photos/398/herbs-mealing-pasta.jpg" class="baner">
+    <h1 class="heder">Witamy w aplikacji!</h1>
+    <div class="text"> 
+      Masz ochotę coś zjeść? <br/>
+      Zapraszamy do skorzystania z naszej aplikacji <br/>
+      dzięki niej zamówisz zdrowe i smaczne posiłki szybko i tanio <br/><br/>
+      <b>Życzymy Smacznego :)</b>
+    </div>
+    
+  </div>
+   
+  <ng-template #loggedOut>
+    <h1 style="text-align: center;">Proszę się zalogować</h1>
+  </ng-template>
 </div>
- 
-<ng-template #loggedOut>
-  <h1 style="text-align: center;">Proszę się zalogować</h1>
-</ng-template>

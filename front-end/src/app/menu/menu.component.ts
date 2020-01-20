@@ -24,13 +24,19 @@ export class MenuComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.menuService.getAllMenu().subscribe(date => {
+    this.menuService.getNotArchiveMenu().subscribe(date => {
       this.menuList = date;
     });
   }
 
   activeMenu(id: Number){
     this.menuService.activeMenu(id).subscribe(date => {
+      this.ngOnInit();
+    });
+  }
+
+  archiveMenu(id: Number){
+    this.menuService.archiveMenu(id).subscribe(date => {
       this.ngOnInit();
     });
   }
@@ -53,7 +59,7 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  addMenu(menu: Menu){
+  addMenu(){
     const dialogRef = this.dialog.open(AddMenuDialog, {
       width: '450px'
     });

@@ -43,6 +43,8 @@ import { MyOrderComponent } from './my-order/my-order.component';
 import { OrderUserComponent } from './order-user/order-user.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { OrderPaidComponent } from './order-paid/order-paid.component';
+import { MyPanelComponent } from './my-panel/my-panel.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -71,6 +73,8 @@ import { OrderPaidComponent } from './order-paid/order-paid.component';
     MyOrderComponent,
     OrderUserComponent,
     OrderPaidComponent,
+    MyPanelComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -100,6 +104,7 @@ import { OrderPaidComponent } from './order-paid/order-paid.component';
     MatDividerModule,
     MatListModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
   ],
   entryComponents: [
     EditUserDialog,

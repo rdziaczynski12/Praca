@@ -11,7 +11,7 @@ export class AppComponent {
 
   private roles: string[];
   public showSideNav = false;
-  private activeLink = window.location.pathname;
+  public activeLink = window.location.pathname;
   constructor(private tokenStorage: TokenStorageService,
     private router: Router) { }
  

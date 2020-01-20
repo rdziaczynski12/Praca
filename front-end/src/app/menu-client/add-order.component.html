@@ -4,7 +4,7 @@
 
 <div class="formEdit">
     <mat-list>
-        <mat-list-item *ngFor="let dish of menu.dishes" >
+        <mat-list-item *ngFor="let dish of menu.dishes" class="pozList">
             <div *ngIf="getQuantity(dish.id, menu.id)">
                 <div class="field name">{{dish.name}}</div>
                 <div class="field quantity">Ilość: {{getQuantity(dish.id, menu.id)}}</div>

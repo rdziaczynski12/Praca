@@ -13,6 +13,7 @@ import { MyOrderComponent } from './my-order/my-order.component';
 import { OrderAdminComponent } from './order-admin/order-admin.component';
 import { OrderUserComponent } from './order-user/order-user.component';
 import { OrderPaidComponent } from './order-paid/order-paid.component';
+import { MyPanelComponent } from './my-panel/my-panel.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'menu', component: MenuComponent},
   { path: 'menu-client', component: MenuClientComponent},
   { path: 'my-order', component: MyOrderComponent},
+  { path: 'my-panel', component: MyPanelComponent},
   { path: 'order-admin', component: OrderAdminComponent},
   { path: 'order-paid', component: OrderPaidComponent},
   { path: 'order-user', component: OrderUserComponent},

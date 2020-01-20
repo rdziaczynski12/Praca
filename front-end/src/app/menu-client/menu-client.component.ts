@@ -181,7 +181,7 @@ export class AddOrderDialog implements OnInit {
     return this.iOrder.get(this.tmp.toString());
   }
 
-  getSum(menu: Menu): Number{
+  getSum(menu: Menu): number{
     let sum: number = 0;
     menu.dishes.forEach(dish => {
       this.tmp2=[menu.id,dish.id];

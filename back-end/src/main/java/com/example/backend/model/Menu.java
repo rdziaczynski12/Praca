@@ -19,6 +19,8 @@ public class Menu {
 
     private boolean avtive;
 
+    private boolean archive;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "menu_dish",
             joinColumns = @JoinColumn(name = "id_menu"),
@@ -28,12 +30,21 @@ public class Menu {
     public Menu() {
     }
 
-    public Menu(Date startDate, Date finishDate, Date deliveryTime, boolean avtive, Set<Dish> dishes) {
+    public Menu(Date startDate, Date finishDate, Date deliveryTime, boolean avtive, boolean archive, Set<Dish> dishes) {
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.deliveryTime = deliveryTime;
         this.avtive = avtive;
         this.dishes = dishes;
+        this.archive = archive;
+    }
+
+    public boolean isArchive() {
+        return archive;
+    }
+
+    public void setArchive(boolean archive) {
+        this.archive = archive;
     }
 
     public boolean isAvtive() {

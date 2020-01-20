@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200/*")
 @RestController
 @RequestMapping({"/api"})
 //@CrossOrigin(origins = "*", maxAge = 3600)
@@ -30,6 +31,12 @@ public class MenuController {
     @GetMapping("/menu/list/active")
     public Collection<Menu> getActiveMenu(){
         return menuService.getActiveMenu();
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/menu/list/not-archive")
+    public Collection<Menu> getNotArchiveMenu(){
+        return menuService.getNotArchiveMenu();
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -54,6 +61,12 @@ public class MenuController {
     @PostMapping(value = "menu/active")
     public void activeMenu(@RequestBody Long id){
         menuService.activeMenu(id);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping(value = "menu/archive")
+    public void archiveMenu(@RequestBody Long id){
+        menuService.archiveMenu(id);
     }
 
 }

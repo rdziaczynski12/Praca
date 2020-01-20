@@ -18,6 +18,7 @@ import java.util.Set;
 @RestController
 @RequestMapping({"/api"})
 //@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:4200/*")
 public class OrderController {
 
     @Autowired

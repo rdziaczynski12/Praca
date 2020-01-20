@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
-//@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200/*")
 @RestController
 @RequestMapping("/api")
 public class AuthRestAPIs {
@@ -69,12 +69,12 @@ public class AuthRestAPIs {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return new ResponseEntity<>(new ResponseMessage("Fail -> Username is already taken!"),
+            return new ResponseEntity<>(new ResponseMessage("Podany login jest już użyty!"),
                     HttpStatus.BAD_REQUEST);
         }
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return new ResponseEntity<>(new ResponseMessage("Fail -> Email is already in use!"),
+            return new ResponseEntity<>(new ResponseMessage("Podany e-mail jest już użyty!"),
                     HttpStatus.BAD_REQUEST);
         }
 

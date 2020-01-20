@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200/*")
 @RestController
 @RequestMapping({"/api"})
 //@CrossOrigin(origins = "*", maxAge = 3600)

@@ -29,7 +29,6 @@
 }
   
 .sideNav {
-    padding: 20px;
     position: fixed;
     top: 48px;
     width: 200px;
@@ -51,7 +50,17 @@
 }
 
 .contentPage{
-  padding-left: 40px;
+  padding: 20px;
+  padding-left: 60px;
   width: 100%;
   min-height: 100%;
+}
+
+.menuLeft > a{
+  font-weight: 500;
+  color: #7a7a7a;
+}
+
+button.mat-menu-item{
+  width: 200px;
 }

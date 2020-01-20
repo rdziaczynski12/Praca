@@ -1,20 +1,22 @@
-<mat-accordion>
-    <mat-expansion-panel *ngFor="let menu of menus" (opened)="getOrderByMenu(menu)">
-      <mat-expansion-panel-header class="header">
-          <mat-panel-title class="title">
-            <b>Zamówienia na: <br/> {{menu.deliveryTime | date: 'dd/MM/yyyy HH:mm'}}</b>
-          </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="content">
-        <mat-list>
-            <mat-list-item *ngFor="let dish of menu.dishes" >
-                <ng-container *ngIf="getQuantityDish(dish.id)">
-                    <div class="name">{{dish.name}}</div>
-                    <div class="quantity">X {{getQuantityDish(dish.id)}}</div>
-                    <mat-divider></mat-divider>
-                </ng-container>
-            </mat-list-item>
-        </mat-list>
-    </div>
-    </mat-expansion-panel>
-</mat-accordion>
+<div class="content">
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let menu of menus" (opened)="getOrderByMenu(menu)">
+          <mat-expansion-panel-header class="header">
+              <mat-panel-title class="title">
+                <b>Zamówienia na: <br/> {{menu.deliveryTime | date: 'dd/MM/yyyy HH:mm'}}</b>
+              </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="content">
+            <mat-list>
+                <mat-list-item *ngFor="let dish of menu.dishes" >
+                    <ng-container *ngIf="getQuantityDish(dish.id)">
+                        <div class="name">{{dish.name}}</div>
+                        <div class="quantity">X {{getQuantityDish(dish.id)}}</div>
+                        <mat-divider></mat-divider>
+                    </ng-container>
+                </mat-list-item>
+            </mat-list>
+        </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

@@ -1,23 +1,25 @@
-<mat-accordion>
-    <mat-expansion-panel *ngFor="let menu of menus" (opened)="getOrderByMenu(menu)">
-      <mat-expansion-panel-header class="header">
-          <mat-panel-title class="title">
-            <b>Zamówienia na: <br/> {{menu.deliveryTime | date: 'dd/MM/yyyy HH:mm'}}</b>
-          </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="content" *ngFor="let user of users">
-            <div class="userTitle">
-                {{user.firstName}} {{user.lastName}}
+<div class="content">
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let menu of menus" (opened)="getOrderByMenu(menu)">
+          <mat-expansion-panel-header class="header">
+              <mat-panel-title class="title">
+                <b>Zamówienia na: <br/> {{menu.deliveryTime | date: 'dd/MM/yyyy HH:mm'}}</b>
+              </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="content" *ngFor="let user of users">
+                <div class="userTitle">
+                    {{user.firstName}} {{user.lastName}}
+                </div>
+                <mat-list>
+                    <mat-list-item *ngFor="let dish of menu.dishes" >
+                        <ng-container *ngIf="getQuantityDish(user.id, dish.id)">
+                            <div class="name">{{dish.name}}</div>
+                            <div class="quantity">X {{getQuantityDish(user.id, dish.id)}}</div>
+                            <mat-divider></mat-divider>
+                        </ng-container>
+                    </mat-list-item>
+                </mat-list>
             </div>
-            <mat-list>
-                <mat-list-item *ngFor="let dish of menu.dishes" >
-                    <ng-container *ngIf="getQuantityDish(user.id, dish.id)">
-                        <div class="name">{{dish.name}}</div>
-                        <div class="quantity">X {{getQuantityDish(user.id, dish.id)}}</div>
-                        <mat-divider></mat-divider>
-                    </ng-container>
-                </mat-list-item>
-            </mat-list>
-        </div>
-    </mat-expansion-panel>
-</mat-accordion>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

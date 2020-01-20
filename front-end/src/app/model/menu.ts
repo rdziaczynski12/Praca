@@ -8,5 +8,6 @@ export class Menu {
     deliveryTime: Date;
     dishes: Dish [];
     active: boolean;
+    archive: boolean;
     constructor(){}
 }
