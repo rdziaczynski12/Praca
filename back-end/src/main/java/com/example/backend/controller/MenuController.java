@@ -40,6 +40,12 @@ public class MenuController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/menu/list/is-order")
+    public Collection<Menu> getMenuIsOrder(){
+        return menuService.getMenuIsOrder();
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "menu/add")
     public void addMenu(@RequestBody Menu menu){
         menuService.addMenu(menu);

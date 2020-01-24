@@ -17,14 +17,13 @@
             </mat-list-item>
             <mat-list-item *ngFor="let orderDish of orderDishs" >
                     <div class="name">{{orderDish.dish.name}}</div>
-                    <div class="quantity">X {{orderDish.quantity}}</div>
-                    <!-- <div class="field price">{{"+ " + (orderDish.quantity*orderDish.dish.price/100  | number:'1.2-2') + " zł" }}</div> -->
+                    <div class="quantity">X {{orderDish.quantity}}</div>                  
                     <mat-divider></mat-divider>
             </mat-list-item>
         </mat-list>
         <div class="sum">
             {{"Razem: " + (order.totalCost / 100 | number:'1.2-2') + " zł"}}
-        </div>
+      </div>
         
     </div>
     </mat-expansion-panel>

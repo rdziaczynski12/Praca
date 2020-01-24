@@ -14,13 +14,13 @@
   
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef> Opis </th>
-        <td mat-cell *matCellDef="let dish"> {{dish.description}} </td>
+        <td mat-cell *matCellDef="let dish"> {{dish.description | slice:0:50}} <span *ngIf="dish.description.length > 50">...</span> </td>
         <td><input></td>
       </ng-container>
     
       <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef> Cena </th>
-        <td mat-cell *matCellDef="let dish"> {{dish.price / 100 | number :'1.2-2'}} </td>
+        <td mat-cell *matCellDef="let dish"> {{dish.price / 100 | number :'1.2-2'}} zł </td>
         <td><input></td>
       </ng-container>
           

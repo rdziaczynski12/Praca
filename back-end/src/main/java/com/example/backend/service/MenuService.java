@@ -52,6 +52,11 @@ public class MenuService {
         return menuRepository.getActiveMenu();
     }
 
+    public Collection<Menu> getMenuIsOrder(){
+
+        return menuRepository.getMenuIsOrder();
+    }
+
 
 
 }

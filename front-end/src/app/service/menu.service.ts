@@ -41,5 +41,8 @@ export class MenuService {
   getNotArchiveMenu(): Observable<any> {
     return this.http.get(`${this.API}/menu/list/not-archive`, httpOptions);
   }
+  getMenuIsOrder(): Observable<any> {
+    return this.http.get(`${this.API}/menu/list/is-order`, httpOptions);
+  }
   
 }

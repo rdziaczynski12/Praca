@@ -28,7 +28,7 @@ export class OrderUserComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.menuService.getActiveMenu().subscribe(data => {
+    this.menuService.getMenuIsOrder().subscribe(data => {
       this.menus = data;
     });
 

@@ -49,13 +49,13 @@ export class OrderPaidComponent implements OnInit {
           }
           else 
             this.temp.timeFinish = order.date;
-          
         }
         else {
           this.temp.cost = order.totalCost.valueOf();
           this.temp.timeStart = order.date;
         }
         this.tableDate.set(order.user.id, this.temp);
+        this.temp =  {user: null, cost: 0, timeStart: null, timeFinish: null};
       });
       this.table = Array.from(this.tableDate.values());
     })
