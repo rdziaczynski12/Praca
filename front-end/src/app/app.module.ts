@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AdminPanelComponent, EditUserDialog } from './admin-panel/admin-panel.component';
+import { UserListComponent, EditUserDialog } from './user-list/user-list.component';
 import {UserService} from './service/user.service';
 import { HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -51,7 +51,7 @@ import {MatMenuModule} from '@angular/material/menu';
   declarations: [
     AppComponent,
     HomeComponent,
-    AdminPanelComponent,
+    UserListComponent,
     EditUserDialog,
     EditMenuDialog,
     AddMenuDialog,

@@ -93,65 +93,6 @@
           <button mat-raised-button class="saveBtn" (click)="changeEmail()">Zmień</button>
           </form>
         </div>
-    
       </mat-expansion-panel>
-<!--     
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <h4>
-              <mat-icon *ngIf="account[2]>=0" class="greenIcon icon">attach_money</mat-icon>
-              <mat-icon *ngIf="account[2]<0" class="redIcon icon">attach_money</mat-icon>
-              <b><u>Moje konto</u></b>
-            </h4>
-          </mat-panel-title>
-          <mat-panel-description class="centerHeader">
-            <h4 *ngIf="account[2]<0" class="loss">Stan rachunku: {{account[2].toFixed(2)}} PLN</h4>
-            <h4 *ngIf="account[2]>=0" class="win">Stan rachunku: {{account[2].toFixed(2)}} PLN</h4>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="divLeft">
-          <mat-list role="list">
-            <mat-list-item role="listitem">Wygrane: <div class="win paddingLeft"> {{account[0].toFixed(2)}} PLN</div> </mat-list-item>
-            <mat-list-item role="listitem">Przegrane: <div class="loss paddingLeft"> {{(-1*account[1]).toFixed(2)}} PLN</div></mat-list-item>
-            <mat-list-item role="listitem" *ngIf="account[2]<0">Saldo: <div class="loss paddingLeft"> {{account[2].toFixed(2)}} PLN</div></mat-list-item>
-            <mat-list-item role="listitem" *ngIf="account[2]>=0">Saldo: <div class="win paddingLeft"> {{account[2].toFixed(2)}} PLN</div></mat-list-item>
-            <mat-list-item role="listitem">Oczekujące: <div class="blue paddingLeft"> {{account[3].toFixed(2)}} PLN</div> </mat-list-item>
-          </mat-list>
-        </div>
-        <div class="centerLine"></div>
-        <div class="divLeft">
-          <mat-list role="list">
-            <mat-list-item role="listitem">Liczba wygranych zakładów: <div class="win paddingLeft"> {{account[4].toFixed(0)}}</div></mat-list-item>
-            <mat-list-item role="listitem">Liczba przegranych zakładów: <div class="loss paddingLeft"> {{account[5].toFixed(0)}}</div></mat-list-item>
-            <mat-list-item role="listitem">Liczba oczekujących zakładów: <div class="blue paddingLeft"> {{account[6].toFixed(0)}}</div></mat-list-item>
-          </mat-list>
-        </div>
-      <div style="clear:both;"></div>
-      </mat-expansion-panel>
-    
-      <mat-expansion-panel (closed)="panelOpenGraph = false" (opened)="panelOpenGraph = true; getGraph()">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <h4>
-              <mat-icon class="icon">swap_vert</mat-icon>
-              <b><u>Wykres szans</u></b>
-            </h4>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="center">
-          <fusioncharts *ngIf="panelOpenGraph"
-            width="100%"
-            height="300px"
-            type="AngularGauge"
-            dataFormat="json"
-            [dataSource]="dataSourceGraph">
-          </fusioncharts>
-          <nav *ngIf="chance>=33 && chance<66" class="displayPercent blue">Twoja trafność wynosi: {{chance.toFixed(0)}} %</nav>
-          <nav *ngIf="chance>=66" class="displayPercent win">Twoja trafność wynosi: {{chance.toFixed(0)}} %</nav>
-          <nav *ngIf="chance<33" class="displayPercent loss">Twoja trafność wynosi: {{chance.toFixed(0)}} %</nav>
-        </div>
-      </mat-expansion-panel> -->
-       
     </mat-accordion>
 </div>

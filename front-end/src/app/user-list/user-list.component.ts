@@ -9,27 +9,19 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-admin-panel',
-  templateUrl: './admin-panel.component.html',
-  styleUrls: ['./admin-panel.component.css']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class AdminPanelComponent implements OnInit {
+export class UserListComponent implements OnInit {
   constructor(private userService: UserService, public dialog: MatDialog ) { }
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', "username", "edit", "delete", "activ"];
   
   user: User = new User();
   users: User[];
-  test: string = "4f0bd6cf-2527-406f-b905-d33f371c8f4e";
-  dane: any;
   ngOnInit() {
     this.getAllUser();
-  }
-  getAllMenu(){
-    this.userService.getAllMenu().subscribe(data => {
-      console.log(data);
-      this.dane=data.status;
-    })
   }
   
 
@@ -66,9 +58,9 @@ export class AdminPanelComponent implements OnInit {
 
 
 @Component({
-  selector: 'admin-panel-edit',
-  templateUrl: './admin-panel-edit.component.html',
-  styleUrls: ['./admin-panel.component.css']
+  selector: 'user-list-edit',
+  templateUrl: './user-list-edit.component.html',
+  styleUrls: ['./user-list.component.css']
 })
 export class EditUserDialog implements OnInit {
 

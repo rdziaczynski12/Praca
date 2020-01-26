@@ -6,6 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dial
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { Dish } from '../model/Dish';
 import { DishService } from '../service/dish.service';
+import { Restaurant } from '../model/restaurant';
 
 export interface DialogData {
   menu: Menu;
@@ -129,7 +130,6 @@ export class EditMenuDialog implements OnInit {
       this.menu.finishDate = this.editForm.get('finishDate').value;
       this.menu.deliveryTime = this.editForm.get('deliveryTime').value;
       this.menu.dishes = this.editForm.get('dishes').value;
-      console.log(this.menu);
       this.menuService.editMenu(this.menu).subscribe(data => {
         this.dialogRef.close(this.menu);
       })
@@ -144,6 +144,20 @@ export class EditMenuDialog implements OnInit {
 
   comparer(d1: any, d2: any): boolean {
     return d1 && d2 ? d1.id === d2.id : d1 === d2;
+  }
+
+  isOpen(restaurant: Restaurant){
+    if( new Date (restaurant.openHour).getHours() == this.editForm.get('deliveryTime').value.getHours())
+      if( new Date (restaurant.openHour).getMinutes() < this.editForm.get('deliveryTime').value.getMinutes())
+        return true;
+    if( new Date (restaurant.closeHour).getHours() == this.editForm.get('deliveryTime').value.getHours())
+      if( new Date (restaurant.closeHour).getMinutes() > this.editForm.get('deliveryTime').value.getMinutes())
+        return true;
+    if( new Date (restaurant.openHour).getHours() < this.editForm.get('deliveryTime').value.getHours() &&
+    new Date (restaurant.closeHour).getHours() > this.editForm.get('deliveryTime').value.getHours())
+      return true;
+    else
+      return false;
   }
 
 }
@@ -173,7 +187,7 @@ export class AddMenuDialog implements OnInit {
       Validators.required
     ]),
     dishes: new FormControl('', [
-      //Validators.required
+      Validators.required
     ]),
   });
 
@@ -197,7 +211,6 @@ export class AddMenuDialog implements OnInit {
       this.menu.finishDate = this.addForm.get('finishDate').value;
       this.menu.deliveryTime = this.addForm.get('deliveryTime').value;
       this.menu.dishes = this.addForm.get('dishes').value;
-      console.log(this.menu);
       this.menuService.addMenu(this.menu).subscribe(data => {
         this.dialogRef.close(this.menu);
       })
@@ -207,9 +220,20 @@ export class AddMenuDialog implements OnInit {
   getAllDish(){
     this.dishService.getAllDish().subscribe(data => {
       this.dishs = data;
-      console.log(this.dishs);
     });
   }
-
+  isOpen(restaurant: Restaurant){
+    if( new Date (restaurant.openHour).getHours() == this.addForm.get('deliveryTime').value.getHours())
+      if( new Date (restaurant.openHour).getMinutes() < this.addForm.get('deliveryTime').value.getMinutes())
+        return true;
+    if( new Date (restaurant.closeHour).getHours() == this.addForm.get('deliveryTime').value.getHours())
+      if( new Date (restaurant.closeHour).getMinutes() > this.addForm.get('deliveryTime').value.getMinutes())
+        return true;
+    if( new Date (restaurant.openHour).getHours() < this.addForm.get('deliveryTime').value.getHours() &&
+    new Date (restaurant.closeHour).getHours() > this.addForm.get('deliveryTime').value.getHours())
+      return true;
+    else
+      return false;
+  }
 }
 

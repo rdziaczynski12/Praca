@@ -35,10 +35,6 @@ export class UserService {
     return this.http.post(`${this.API}/user/activ/${id}`, httpOptions);
   }
 
-  getAllMenu(): Observable<any> {
-    return this.http.get(`${this.API}/uber/menu`);
-  }
-
   getUserData(userName: String): Observable<any> {
     return this.http.get(`${this.API}/user/data/${userName}`);
   }

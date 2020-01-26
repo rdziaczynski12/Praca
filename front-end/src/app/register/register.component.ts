@@ -39,11 +39,12 @@ export class RegisterComponent implements OnInit {
     ])),
     password: new FormControl("", Validators.compose([
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
+      Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')
     ])),
     repeatPassword: new FormControl("", Validators.compose([
       Validators.required,
-      Validators.pattern(this.password)
+      //Validators.pattern(this.password)
     ])),
     email: new FormControl("", Validators.compose([
       Validators.required,

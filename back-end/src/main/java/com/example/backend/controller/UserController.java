@@ -40,14 +40,6 @@ public class UserController {
         userService.editUser(user);
     }
 
-    @PostMapping("/slow")
-    private List<String> getAllTweets() {
-        return Arrays.asList(
-                "RestTemplate rules @user1",
-                "WebClient is better @user2",
-                "OK, both are useful @user1");
-    }
-
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "user/activ/{id}")
     public void activUser(@PathVariable(name = "id") Long id){
@@ -78,13 +70,3 @@ public class UserController {
         return userService.getUserData(userName);
     }
 }
-
-//public interface passwordData{
-//     String userName;
-//     String password;
-//     String newPassword;
-//
-//    passwordData(){
-//
-//    }
-//}

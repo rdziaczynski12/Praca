@@ -11,22 +11,63 @@
           <form [formGroup] = "registerForm" (ngSubmit) = "register()" >
             <mat-form-field>
               <input matInput placeholder="Imię" formControlName = "firstName" name="firstName" required>
+              <mat-error *ngIf="registerForm.get('firstName').hasError('required')">
+                Imię jest <strong>wymagane</strong>!
+              </mat-error>
+              <mat-error *ngIf="!registerForm.get('firstName').valid && !registerForm.get('firstName').hasError('required')">
+                Imie jest <strong>nie prawidłowe</strong>!
+              </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Nazwisko" formControlName = "lastName" name="lastName" required>
+                <mat-error *ngIf="registerForm.get('lastName').hasError('required')">
+                  Nazwisko jest <strong>wymagane</strong>!
+                </mat-error>
+                <mat-error *ngIf="!registerForm.get('lastName').valid && !registerForm.get('lastName').hasError('required')">
+                  Nazwisko jest <strong>nie prawidłowe</strong>!
+                </mat-error>
               </mat-form-field>
             <mat-form-field>
               <input matInput placeholder="Login" formControlName = "username" name="username" required>
+              <mat-error *ngIf="registerForm.get('username').hasError('required')">
+                Login jest <strong>wymagany</strong>!
+              </mat-error>
+              <mat-error *ngIf="!registerForm.get('username').valid && !registerForm.get('username').hasError('required')">
+                Login jest <strong>nie prawidłowy</strong>!
+              </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="E-mail" formControlName = "email" name="email" required>
+                <mat-error *ngIf="registerForm.get('email').hasError('required')">
+                  E-mail jest <strong>wymagany</strong>!
+                </mat-error>
+                <mat-error *ngIf="!registerForm.get('email').valid && !registerForm.get('email').hasError('required')">
+                  E-mail jest <strong>nie prawidłowy</strong>!
+                </mat-error>
               </mat-form-field>
             <mat-form-field>
               <input matInput type="password" placeholder="Hasło" formControlName = "password" name="password" required>
+              <mat-error *ngIf="registerForm.get('password').hasError('pattern') && !registerForm.get('password').hasError('required') && !registerForm.get('password').hasError('minlength')">
+                Hasło musi <strong>być silne</strong> (mała litera, duża, cyfra i znak specyjalny)!
+              </mat-error>
+              <mat-error *ngIf="registerForm.get('password').hasError('required')">
+                Hasło jest <strong>wymagane</strong>!
+              </mat-error>
+              <mat-error *ngIf="registerForm.get('password').hasError('minlength') && !registerForm.get('password').hasError('required')">
+                Hasło musi zawierać <strong>minimum 8 znaków i być silne</strong>
+              </mat-error>
             </mat-form-field>
+
             <mat-form-field>
-                <input matInput type="password"  placeholder="Powtórz hasło" (keyup.enter)="register()" formControlName = "repeatPassword" name="repeatPassword" required>
-              </mat-form-field>
+                <input matInput type="password"  placeholder="Powtórz hasło" (keyup.enter)="register()" formControlName = "repeatPassword" name="repeatPassword" pattern="{{registerForm.get('password').value}}" required>
+                <mat-error *ngIf="registerForm.get('repeatPassword').hasError('pattern') && !registerForm.get('repeatPassword').hasError('required')">
+                  Podane hasła są <strong>różne</strong> !
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('repeatPassword').hasError('required')">
+                  Powtórzenie nowego hasła jest <strong>wymagane</strong>!
+                </mat-error>
+            </mat-form-field>
+
             <a mat-stroked-button class="buttonRegister" (click)="register()">Zarejestruj</a>
           </form>
         </mat-card-content>

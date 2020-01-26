@@ -7,23 +7,37 @@
     <mat-form-field> 
         <input matInput formControlName="startDate" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1" placeholder="Rozpoczęcie" readonly>
         <owl-date-time #dtPicker1></owl-date-time>
+        <mat-error>
+            Podany termin jest <strong>błądny</strong>!
+        </mat-error>
     </mat-form-field> 
 
     <mat-form-field> 
-        <input matInput formControlName="finishDate" [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2" placeholder="Zakończenie" readonly>
+        <input matInput [min]="addForm.get('startDate').value" formControlName="finishDate" [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2" placeholder="Zakończenie" readonly>
         <owl-date-time #dtPicker2></owl-date-time>
+        <mat-error>
+            Podany termin jest <strong>błądny</strong>!
+        </mat-error>
     </mat-form-field> 
 
     <mat-form-field> 
-        <input matInput formControlName="deliveryTime" [owlDateTimeTrigger]="dtPicker3" [owlDateTime]="dtPicker3" placeholder="Dostawa" readonly>
+        <input matInput [min]="addForm.get('finishDate').value" formControlName="deliveryTime" [owlDateTimeTrigger]="dtPicker3" [owlDateTime]="dtPicker3" placeholder="Dostawa" readonly>
         <owl-date-time #dtPicker3></owl-date-time>
+        <mat-error>
+            Podany termin jest <strong>błądny</strong>!
+        </mat-error>
     </mat-form-field> 
 
     <mat-form-field>
         <mat-label>Dania</mat-label>
         <mat-select  multiple formControlName="dishes">
-          <mat-option *ngFor="let dish of dishs" [value]="dish">{{dish.name}} - {{dish.price / 100.0}} zł</mat-option>
+            <ng-container *ngFor="let dish of dishs">
+                <mat-option *ngIf="isOpen(dish.restaurant)" [value]="dish">{{dish.name}} - {{dish.price / 100.0}} zł</mat-option>
+            </ng-container>
         </mat-select>
+        <mat-error>
+            Nie wybrano <strong>dań</strong>!
+        </mat-error>
       </mat-form-field>
 
     <button mat-flat-button class="saveBtn" (click)="addMenu()">Zapisz</button>
