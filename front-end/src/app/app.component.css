@@ -1,0 +1,66 @@
+.container {
+    width: 100%;
+    height: 100%;
+    margin-left: 0px;
+    background-color: rgb(221, 221, 221);
+  }
+  
+.content {
+    display: flex;
+    min-height:  calc(100% - 48px);
+    position: relative;
+    top: 48px;
+  }
+
+.buttonSideNav {
+  position: fixed;
+  top: 48px;
+  min-width: 30px;
+  height: 40px;
+  background-color: #3f51b5;
+  border-radius: 0px 0px 10px 0px;
+  padding: 0px;
+  color: #fff;
+}
+
+.iconShow {
+  font-size: 40px;
+  font-weight: 900;
+}
+  
+.sideNav {
+    position: fixed;
+    top: 48px;
+    width: 200px;
+  }
+
+.topNav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+#allContent {
+    margin-left: 0px !important;
+}
+
+.showMenuActived {
+    margin-left: 200px;
+}
+
+.contentPage{
+  padding: 20px;
+  padding-left: 60px;
+  width: 100%;
+  min-height: 100%;
+}
+
+.menuLeft > a{
+  font-weight: 500;
+  color: #7a7a7a;
+}
+
+button.mat-menu-item{
+  width: 200px;
+}

@@ -16,7 +16,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
   
   getAllUser(): Observable<any> {
-    return this.http.get(`${this.API}/user`);
+    return this.http.get(`${this.API}/user/list`);
   }
 
   addUser(user: User){
@@ -29,6 +29,24 @@ export class UserService {
 
   editUser(user: User){
     return this.http.put(`${this.API}/user/edit`, user, httpOptions);
+  }
+
+  activUser(id: Number){
+    return this.http.post(`${this.API}/user/activ/${id}`, httpOptions);
+  }
+
+  getUserData(userName: String): Observable<any> {
+    return this.http.get(`${this.API}/user/data/${userName}`);
+  }
+
+  changePassword(userName: String, password: String, newPassword: String): Observable<any>{
+    const body = {userName: userName, password: password, newPassword: newPassword}
+    return this.http.post(`${this.API}/user/change/password`, body, httpOptions);
+  }
+
+  changeEmail(userName: String, email: String): Observable<any>{
+    const body = {userName: userName, email: email}
+    return this.http.post(`${this.API}/user/change/email`, body, httpOptions);
   }
 
 }

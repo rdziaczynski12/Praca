@@ -1,0 +1,54 @@
+<div class="content">
+  <mat-accordion *ngIf="isLoading; else notLoading">
+
+    <mat-expansion-panel *ngFor="let menu of menuList">
+      <mat-expansion-panel-header class="header">
+          <mat-panel-title class="title">
+            <b>Zamówienie na: {{menu.deliveryTime | date: 'dd/MM/yyyy HH:mm'}}</b>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="list">
+        <mat-card class="post" *ngFor="let dish of menu.dishes">
+            <mat-card-header>
+              <div mat-card-avatar class="header-image"></div>
+              <mat-card-title>{{dish.name}} - {{dish.price / 100.0}} zł</mat-card-title>
+                <mat-card-subtitle>
+                    <div class="typeDish" *ngFor="let type of dish.types"> | {{type.name}}</div>
+                    <div class="typeDish"> |</div>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="cardContent">
+                <div>
+                    {{dish.description}}
+                </div>
+                <button mat-raised-button class="buttons option" (click)="deleteQuantity(dish.id, menu.id)">-</button>
+                <mat-form-field appearance="outline" class="fieldQuantity option">
+                    <mat-label>Ilość</mat-label>
+                    <input matInput placeholder="Placeholder" [value]="getQuantity(dish.id, menu.id)" disabled>
+                    <mat-icon matSuffix>add_shopping_cart</mat-icon>
+                </mat-form-field>
+                <button mat-raised-button class="buttons option" (click)="addQuantity(dish.id, menu.id)">+</button>
+                <div *ngIf="getQuantity(dish.id, menu.id)" class="sumDish option" >
+                  {{"+ " + (getQuantity(dish.id, menu.id)*dish.price/100  | number:'1.2-2') + " zł" }}
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <div class="sumAll">
+          {{"Do zapłaty: " + (getSum(menu)/100 | number:'1.2-2') + " zł"}}
+        </div>
+        <button mat-flat-button class="addBtn" (click)="openAddOrder(menu)">Zamów</button>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="!menuList.length" disabled=true>
+      <mat-expansion-panel-header>
+          <mat-panel-title>
+            <b>Aktualnie brak dostępnych menu</b>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <ng-template #notLoading>
+    <mat-spinner class="spinner" mode="indeterminate"></mat-spinner>
+  </ng-template>
+</div>

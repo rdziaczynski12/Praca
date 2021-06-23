@@ -1,0 +1,27 @@
+<div>
+    <h1 mat-dialog-title >Podsumowanie:</h1>
+</div>
+
+<div class="formEdit">
+    <mat-list>
+        <ng-container *ngFor="let dish of menu.dishes">
+            <mat-list-item *ngIf="getQuantity(dish.id, menu.id)" class="pozList">
+                <div>
+                    <div class="field name">{{dish.name}}</div>
+                    <div class="field quantity">Ilość: {{getQuantity(dish.id, menu.id)}}</div>
+                    <div class="field price">{{"+ " + (getQuantity(dish.id, menu.id)*dish.price/100  | number:'1.2-2') + " zł" }}</div>
+                    <mat-divider class="line"></mat-divider>
+                </div>
+            </mat-list-item>
+        </ng-container>
+    </mat-list>
+
+    <div class="sum">
+        {{"Do zapłaty: " + (getSum(menu)/100 | number:'1.2-2') + " zł"}}
+    </div>
+
+    <button mat-flat-button class="saveBtn" (click)="addOrder()">Zamów</button>
+    <button mat-raised-button class="cancelBtn" (click)="cancel()">Anuluj</button>
+    
+</div>
+

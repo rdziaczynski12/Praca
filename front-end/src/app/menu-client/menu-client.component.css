@@ -1,0 +1,154 @@
+  
+.content{
+  padding: 20px;
+}
+.spinner{
+  margin:0 auto;
+}
+
+.list {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+    margin-top: 20px;
+}
+.post {
+    margin-bottom: 20px;
+  }
+  
+.header-image {
+    
+    background-size: cover;
+    background-color: rgb(194, 194, 194);
+    border: 1px;
+    border: solid;
+  }
+
+.imageColor {
+  background-color: rgb(19, 214, 36);
+}
+
+.typeDish{
+  display: inline;
+}
+
+.buttons {
+
+}
+
+.addBtn{
+  background: #0066ff;
+  color: #fff;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.cardContent{
+  width: 100%;
+}
+
+.fieldQuantity{
+  text-align: center;
+  
+}
+
+.option{
+  height: 50px;
+  width: 100px;
+  margin-left: 5%;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.sumDish{
+  width: 300px;
+  text-align: right;
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+.sumAll{
+  position: relative;
+  right: 20px;
+  text-align: right;
+  width: calc(100% - 20px);
+  font-size: 30px;
+
+}
+
+.pozList{
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.field{
+  width: 300px;
+
+}
+
+.name{
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.quantity{
+ 
+
+
+}
+
+.line{
+
+}
+
+.price{
+  position: relative;
+  bottom: 20px;
+  text-align: right;
+}
+
+.sum{
+  text-align: center;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.title{
+  font-size: 18px;
+}
+
+.header{
+  padding: 20px;
+}
+
+
+
+
+
+
+.saveBtn {
+  background: #0066ff;
+}
+
+.cancelBtn {
+  background: #BBBBBB;
+}
+
+.formEdit > mat-form-field {
+    width: 100%;
+}
+
+.formEdit > button {
+  color: #fff;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.time{
+  z-index: 1000 !important;
+}
+
+.timepicker-overlay[_ngcontent-drx-c11] {
+  z-index: 1000 !important;
+}

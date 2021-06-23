@@ -1,0 +1,58 @@
+<div class="container">
+    <table mat-table [dataSource]="restaurants" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let restaurant"> {{restaurant.id}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+        <td mat-cell *matCellDef="let restaurant"> {{restaurant.name}} </td>
+        <td><input></td>
+      </ng-container>
+  
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Adres </th>
+        <td mat-cell *matCellDef="let restaurant"> {{restaurant.address}} </td>
+        <td><input></td>
+      </ng-container>
+    
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let restaurant"> {{restaurant.email}} </td>
+        <td><input></td>
+      </ng-container>
+          
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Telefon </th>
+        <td mat-cell *matCellDef="let restaurant"> {{restaurant.phoneNumber}} </td>
+        <td><input></td>
+      </ng-container>
+    
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Edycja</th>
+        <td mat-cell *matCellDef="let restaurant"> 
+            <button mat-icon-button class="editButton" (click)="openEditRestaurant(restaurant)">
+              <mat-icon>edit</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Usuń</th>
+        <td mat-cell *matCellDef="let restaurant">
+            <button mat-icon-button class="deleteButton" (click)="deleteRestaurant(restaurant.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+        <td mat-cell>test</td>
+    </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+    </table>
+    
+    <button mat-flat-button class="addBtn" (click)="openAddRestaurant()">Dodaj restauracje</button>
+  </div>

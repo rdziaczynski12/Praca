@@ -1,0 +1,59 @@
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 80%;
+    background-color: rgb(231, 231, 231);
+    border-radius: 10px;
+}
+table{
+    width: 100%;
+}
+
+.formAdd{
+    width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formAdd > mat-form-field{
+    width: 40%;
+    padding-top: 20px;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.formAdd > button{
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #0066ff;
+    color: #fff;
+}
+
+
+.saveBtn {
+    background: #0066ff;
+}
+  
+.cancelBtn {
+    background: #BBBBBB;
+}
+
+.formEdit > mat-form-field {
+      width: 100%;
+}
+
+.formEdit > button {
+    color: #fff;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.addBtn{
+    background: #0066ff;
+    color: #fff;
+    width: 100%;
+    margin-top: 15px;
+  }

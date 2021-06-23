@@ -1,8 +1,44 @@
-<nav mat-tab-nav-bar backgroundColor="primary">
-  <a mat-tab-link *ngFor="let link of links"
-     (click)="activeLink = link.link"
-     [routerLink]="link.link"
-     [active]="activeLink == link.link"> {{link.name}} </a>
-</nav>
+<mat-drawer-container class="container" autosize>
+    <mat-drawer-content id="allContent">
+      <nav mat-tab-nav-bar backgroundColor="primary" class="topNav">
+        <a mat-tab-link *ngIf="isUser()" (click)="activeLink = '/my-panel'" routerLink="/my-panel" [active]="activeLink == '/my-panel'"><i class="material-icons">account_circle</i></a>
+        <a mat-tab-link (click)="activeLink = '/home'" routerLink="/home" [active]="activeLink == '/home'"> Strona główna </a>
+        <a mat-tab-link *ngIf="isUser()" (click)="activeLink = '/menu-client'" routerLink="/menu-client" [active]="activeLink == '/menu-client'"> Menu </a>
+        <a mat-tab-link *ngIf="isUser()" (click)="activeLink = '/my-order'" routerLink="/my-order" [active]="activeLink == '/my-order'"> Moje zamówienia </a>
+        <a mat-tab-link (click)="activeLink = '/login'" *ngIf="!isLogin()" routerLink="/login" [active]="activeLink == '/login'"> Zaloguj </a>
+        <a mat-tab-link (click)="activeLink = '/register'" *ngIf="!isLogin()" routerLink="/register" [active]="activeLink == '/register'"> Rejestracja </a>
+        <a mat-tab-link (click)="logout()" *ngIf="isLogin()"> Wyloguj </a>
+      </nav>
 
-<router-outlet></router-outlet>
+      <div class="content" [ngClass]="{'showMenuActived': showSideNav}">
+          <button type="button" *ngIf="isAdmin()" class="buttonSideNav" mat-button (click)="drawer.toggle(); showMenu()"  disableClose>
+            <i *ngIf="showSideNav" class="material-icons iconShow"> navigate_before </i>
+            <i *ngIf="!showSideNav" class="material-icons iconShow"> navigate_next </i>
+          </button>
+          <div class="contentPage">
+            <router-outlet></router-outlet>
+          </div>
+      </div>
+    </mat-drawer-content>
+
+    <mat-drawer #drawer class="sideNav" mode="side">
+      <mat-nav-list class="menuLeft">
+        <a mat-list-item routerLink="/menu"> Menu </a>
+        <a mat-list-item routerLink="/user-list"> Użytkownicy </a>
+        <a mat-list-item [matMenuTriggerFor]="menu">Zamówienia</a>
+        <a mat-list-item routerLink="/dish-list"> Dania </a>
+        <a mat-list-item routerLink="/type-dish-list"> Typy dań </a>
+        <a mat-list-item routerLink="/restaurant-list"> Restauracje </a>
+        <mat-menu #menu="matMenu" class="menuLeftList">
+          <button mat-menu-item routerLink="/order-admin">Lista</button>
+          <button mat-menu-item routerLink="/order-user">Użytkowników</button>
+          <button mat-menu-item routerLink="/order-paid">Do zapłaty</button>
+        </mat-menu>
+      </mat-nav-list>
+
+
+    </mat-drawer>
+  
+
+  
+  </mat-drawer-container>

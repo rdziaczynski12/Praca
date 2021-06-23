@@ -1,0 +1,98 @@
+<div  class="content">
+    <mat-accordion>
+    
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>
+              <mat-icon class="icon">person</mat-icon>
+              <b><u>Moje dane</u></b>
+            </h4>
+          </mat-panel-title>
+          <mat-panel-description class="centerHeader">
+            <h4>Login: {{this.user.username}}</h4>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item role="listitem"><b>Imię:</b> <div class="paddingLeft">{{this.user.firstName}}</div></mat-list-item>
+          <mat-list-item role="listitem"><b>Nazwisko:</b> <div class="paddingLeft">{{this.user.lastName}}</div></mat-list-item>
+          <mat-list-item role="listitem"><b>E-mail:</b> <div class="paddingLeft">{{this.user.email}}</div></mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>
+                <mat-icon class="icon">https</mat-icon>
+              <b><u>Zmiana hasła</u></b>
+            </h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <div class="center">
+          <form [formGroup]="changePasswordForm">
+            <mat-form-field class="example-full-width formPassword">
+              <input matInput type="password" placeholder="Aktualne hasło" formControlName="currentPassword">
+              <mat-error *ngIf="changePasswordForm.get('currentPassword').hasError('required')">
+                Podanie obecnego hasła jest <strong>wymagane</strong>!
+              </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width formPassword">
+              <input matInput type="password" placeholder="Nowe hasło" formControlName="newPassword">
+              <mat-error *ngIf="changePasswordForm.get('newPassword').hasError('pattern') && !changePasswordForm.get('newPassword').hasError('required') && !changePasswordForm.get('newPassword').hasError('minlength')">
+                Hasło musi <strong>być silne</strong> (mała litera, duża, cyfra i znak specyjalny)!
+              </mat-error>
+              <mat-error *ngIf="changePasswordForm.get('newPassword').hasError('required')">
+                Nowe hasło jest <strong>wymagane</strong>!
+              </mat-error>
+              <mat-error *ngIf="changePasswordForm.get('newPassword').hasError('minlength') && !changePasswordForm.get('newPassword').hasError('required')">
+                Hasło musi zawierać <strong>minimum 8 znaków i być silne</strong> (mała litera, duża, cyfra i znak specyjalny)!
+              </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width formPassword">
+              <input matInput type="Password" placeholder="Powtórz nowe hasło" formControlName="confirmPassword" pattern="{{changePasswordForm.get('newPassword').value}}">
+              <mat-error *ngIf="changePasswordForm.get('confirmPassword').hasError('pattern') && !changePasswordForm.get('confirmPassword').hasError('required')">
+                Podane hasła są <strong>różne</strong> !
+              </mat-error>
+              <mat-error *ngIf="changePasswordForm.get('confirmPassword').hasError('required')">
+                Powtórzenie nowego hasła jest <strong>wymagane</strong>!
+              </mat-error>
+            </mat-form-field>
+    
+          <button mat-raised-button class="saveBtn" (click)="changePassword()">Zapisz zmiany</button>
+          </form>
+        </div>
+    
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>
+                <mat-icon class="icon">email</mat-icon>
+              <b><u>Zmiana email</u></b>
+            </h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <div class="center">
+          <form [formGroup]="changeEmailForm">
+            <mat-form-field class="example-full-width formPassword">
+              <input matInput type="text" placeholder="Nowy e-mail" formControlName="email">
+              <mat-error *ngIf="changeEmailForm.get('email').hasError('required')">
+                Podanie adresu e-mail jest <strong>wymagane</strong>!
+              </mat-error>
+              <mat-error *ngIf="changeEmailForm.get('email').hasError('email')">
+                Podany adres e-mail jest <strong>nie poprawny</strong>!
+              </mat-error>
+            </mat-form-field>
+    
+          <button mat-raised-button class="saveBtn" (click)="changeEmail()">Zmień</button>
+          </form>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+</div>
